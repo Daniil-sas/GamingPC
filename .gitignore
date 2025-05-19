@@ -1,6 +1,52 @@
-composer.phar
-/vendor/
+# .NET Core
+bin/
+obj/
+*.user
+*.suo
+*.sln.docstates
 
-# Commit your application's lock file https://getcomposer.org/doc/01-basic-usage.md#commit-your-composer-lock-file-to-version-control
-# You may choose to ignore a library lock file http://getcomposer.org/doc/02-libraries.md#lock-file
-# composer.lock
+# ASP.NET Core
+wwwroot/lib/
+wwwroot/css/
+wwwroot/js/
+*.db
+
+# PostgreSQL
+*.sql
+*.pgsql
+
+# Nginx
+logs/
+nginx.conf
+
+# React
+node_modules/
+build/
+dist/
+npm-debug.log
+yarn-error.log
+
+# Redis
+dump.rdb
+appendonly.aof
+
+# RabbitMQ
+rabbitmq.log
+*.db
+
+# Docker
+*.tar
+*.log
+docker-compose.override.yml
+
+# Kubernetes
+*.kube
+*.yaml
+*.yml
+
+# Visual Studio Code
+.vscode/
+
+# OS generated files
+.DS_Store
+Thumbs.db
