@@ -1,52 +1,86 @@
-# .NET Core
-bin/
-obj/
+### Общие файлы IDE и ОС ###
+.DS_Store
+*.swp
+*.swo
+Thumbs.db
+.idea/
+.vscode/
 *.user
 *.suo
-*.sln.docstates
+*.log
+*.bak
 
-# ASP.NET Core
-wwwroot/lib/
-wwwroot/css/
-wwwroot/js/
-*.db
+### .NET Core ###
+**/[Bb]in/
+**/[Oo]bj/
+**/.vs/
+**/launchSettings.json
+appsettings.Development.json
+appsettings.Local.json
+*.pdb
+*.dll
+*.exe
 
-# PostgreSQL
-*.sql
-*.pgsql
-
-# Nginx
-logs/
-nginx.conf
-
-# React
+### React ###
 node_modules/
-build/
-dist/
-npm-debug.log
-yarn-error.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+/build/
+/dist/
+/.cache/
+/.env.local
+/.env.development.local
+/.env.test.local
+/.env.production.local
+/coverage/
+.eslintcache
+
+### Базы данных ###
+# PostgreSQL
+/data/
+/postgres_data/
+*.sql
+*.dump
 
 # Redis
 dump.rdb
-appendonly.aof
 
-# RabbitMQ
-rabbitmq.log
-*.db
-
-# Docker
-*.tar
+### Nginx ###
 *.log
+/cache/
+/nginx/logs/
+nginx/ssl/*
+**/*.key
+**/*.crt
+**/*.pem
+
+### RabbitMQ ###
+rabbitmq.log
+**/.erlang.cookie
+
+### Docker ###
 docker-compose.override.yml
+**/.dockerignore
+**/docker-compose*.yml
+**/Dockerfile*
+**/docker.env
 
-# Kubernetes
-*.kube
-*.yaml
-*.yml
+### Kubernetes ###
+*-secret.yaml
+*-override.yaml
+/manifests/generated/
 
-# Visual Studio Code
-.vscode/
+### Файлы окружения ###
+.env
+.env.*
+!.env.example
 
-# OS generated files
-.DS_Store
-Thumbs.db
+### Логи и временные файлы ###
+*.log
+*.tmp
+*.temp
+
+### Тестовые результаты ###
+TestResults/
+*.trx

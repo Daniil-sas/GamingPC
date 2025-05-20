@@ -10,6 +10,10 @@ FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
 COPY ["AuthService/AuthService.csproj", "AuthService/"]
+COPY ["AuthService.Application/AuthService.Application.csproj", "AuthService.Application/"]
+COPY ["AuthService.Domain/AuthService.Domain.csproj", "AuthService.Domain/"]
+COPY ["AuthService.Infrastructure/AuthService.Infrastructure.csproj", "AuthService.Infrastructure/"]
+COPY ["AuthService.Persistence/AuthService.Persistence.csproj", "AuthService.Persistence/"]
 RUN dotnet restore "./AuthService/AuthService.csproj"
 COPY . .
 WORKDIR "/src/AuthService"
