@@ -21,6 +21,9 @@ namespace AuthService.Infrastructure
         {
             Claim[] claims = [new("userId", user.Id.ToString())];
 
+            Console.WriteLine(_jwtSetting.Secret);
+            Console.WriteLine(_jwtSetting.ExpiryHours);
+
             var signingCredentials = new SigningCredentials(
                 new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_jwtSetting.Secret)),
                 SecurityAlgorithms.HmacSha256);

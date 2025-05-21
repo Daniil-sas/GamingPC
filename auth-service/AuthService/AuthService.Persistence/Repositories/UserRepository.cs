@@ -23,9 +23,9 @@ namespace AuthService.Persistence.Repositories
             {
                 Id = user.Id,
                 UserName = user.UserName,
-                Login = user.Login,
+                Email = user.Email,
                 PasswordHash = user.PasswordHash,
-                Email = user.Email
+                Login = user.Login
             };
 
             await _dbContext.Users.AddAsync(userEntity);

@@ -6,6 +6,7 @@ using AuthService.Middleware;
 using AuthService.Persistence;
 using AuthService.Persistence.Mappings;
 using AuthService.Persistence.Settings;
+using Microsoft.EntityFrameworkCore;
 using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -29,7 +30,7 @@ services.AddScoped<GlobalExceptionHandler>();
 services.Configure<JwtSetting>(configuration.GetSection("JwtSetting"));
 
 services
-    .AddPersistence(configuration)
+    .AddPersistence()
     .AddApplication()
     .AddInfrastructure();
 
@@ -47,6 +48,13 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseExceptionHandler();
+
+using (var scope = app.Services.CreateScope())
+{
+    var dbServices = scope.ServiceProvider;
+    var context = dbServices.GetRequiredService<AuthServiceDbContext>();
+    context.Database.Migrate();
+}
 
 app.UseHttpsRedirection();
 

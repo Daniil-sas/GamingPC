@@ -1,19 +1,21 @@
 ﻿using AuthService.Domain.Interfaces.Repositories;
 using AuthService.Persistence.Repositories;
+using AuthService.Persistence.Settings;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Options;
 
 namespace AuthService.Persistence
 {
     public static class PersistanceExtensions
     {
-        public static IServiceCollection AddPersistence(this IServiceCollection services, IConfiguration configuration)
+        public static IServiceCollection AddPersistence(this IServiceCollection services)
         {
-            var t = configuration.GetConnectionString(nameof(AuthServiceDbContext));
-            services.AddDbContext<AuthServiceDbContext>(options =>
+            services.AddDbContext<AuthServiceDbContext>((dbService, options) =>
             {
-                options.UseNpgsql(configuration.GetConnectionString(nameof(AuthServiceDbContext)));
+                var setting = dbService.GetRequiredService<IOptions<DatabaseSettings>>().Value;
+
+                options.UseNpgsql(setting.ConnectionString);
             });
 
             services.AddScoped<IUserRepository, UserRepository>();
