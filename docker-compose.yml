@@ -1,0 +1,42 @@
+services:
+  auth_service:
+    build:
+      context: auth-service/AuthService/
+      dockerfile: AuthService/Dockerfile
+    ports:
+      - "8080:8080"
+    container_name: auth_service_api
+    environment:
+      - JwtSetting__Secret=3dasdas1e4212gewgaegdsaad21e12t23y3ty32hebedau39898323132444444
+      - Database__HOST=${DB_HOST_AUTHDB}
+      - Database__PORT=${DB_PORT}
+      - Database__NAME=${DB_NAME_AUTH_DB}
+      - Database__USER=${DB_USER}
+      - Database__PASSWORD=${DB_PASSWORD}
+    depends_on:
+      - auth_db
+      - redis_db
+  auth_db:
+    image: postgres
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_HOST_AUTH_METHOD: trust
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_NAME_AUTH_DB}
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    container_name: auth_db_container
+  redis_db:
+    image: redis:8.0-alpine
+    ports:
+      - "6379:6379"
+    environment:
+      - REDIS_PASSWORD=${REDIS_PASSWORD}
+    volumes:
+      - redis_data:/data
+    container_name: redis_db_container 
+volumes:
+  db_data:
+  redis_data:

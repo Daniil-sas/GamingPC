@@ -1,6 +1,6 @@
 ﻿using AuthService.Application.Interfaces.Auth;
-using AuthService.Application.Settings;
 using AuthService.Domain.Models;
+using AuthService.Domain.Settings;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
@@ -20,9 +20,6 @@ namespace AuthService.Infrastructure
         public string GenerateToken(User user)
         {
             Claim[] claims = [new("userId", user.Id.ToString())];
-
-            Console.WriteLine(_jwtSetting.Secret);
-            Console.WriteLine(_jwtSetting.ExpiryHours);
 
             var signingCredentials = new SigningCredentials(
                 new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_jwtSetting.Secret)),
