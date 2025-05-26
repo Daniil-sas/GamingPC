@@ -1,8 +1,6 @@
-﻿using AuthService.Application.Settings;
-using AuthService.Controllers;
+﻿using AuthService.Controllers;
+using AuthService.Infrastructure.Settings;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.IdentityModel.Tokens;
-using System.Text;
 
 namespace AuthService.Extensions
 {
@@ -11,6 +9,7 @@ namespace AuthService.Extensions
         public static void AddMappedEndpoints(this IEndpointRouteBuilder app)
         {
             app.MapUsersEndpoints();
+            app.MapTokenUpdateEndpoints();
         }
 
         public static void AddApiAuthentication(
@@ -28,25 +27,32 @@ namespace AuthService.Extensions
                 })
                 .AddJwtBearer(JwtBearerDefaults.AuthenticationScheme, options =>
                 {
-                    options.RequireHttpsMetadata = true;
+                    options.RequireHttpsMetadata = false;
                     options.SaveToken = true;
 
                     options.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters
                     {
-                        ValidateAudience = false,
-                        ValidateIssuer = false,
+                        ValidateAudience = true,
+                        ValidAudience = jwtSetting.Audience,
+                        ValidateIssuer = true,
+                        ValidIssuer = jwtSetting.Issuer,
                         ValidateLifetime = true,
                         ValidateIssuerSigningKey = true,
-                        IssuerSigningKey = new SymmetricSecurityKey(
-                            Encoding.UTF8.GetBytes(jwtSetting!.Secret))
+                        IssuerSigningKey = jwtSetting.GetSymmetricSecurityKey(),
+                        ClockSkew = TimeSpan.Zero,
                     };
 
                     options.Events = new JwtBearerEvents
                     {
                         OnMessageReceived = context =>
                         {
-                            context.Token = context.Request.Cookies["secretCookie"];
+                            context.Token = context.Request.Cookies["token"];
 
+                            return Task.CompletedTask;
+                        },
+                        OnAuthenticationFailed = context =>
+                        {
+                            Console.WriteLine("Ошибка аутентификации: " + context.Exception.Message);
                             return Task.CompletedTask;
                         }
                     };

@@ -6,5 +6,6 @@ namespace AuthService.Domain.Interfaces.Repositories
     {
         Task Add(User user);
         Task<User> GetByEmail(string email);
+        Task<User> GetById(string userId);
     }
 }

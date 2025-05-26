@@ -8,11 +8,15 @@ services:
     container_name: auth_service_api
     environment:
       - JwtSetting__Secret=3dasdas1e4212gewgaegdsaad21e12t23y3ty32hebedau39898323132444444
+      - JwtSetting__RefreshTokenExpiryDays=7
       - Database__HOST=${DB_HOST_AUTHDB}
       - Database__PORT=${DB_PORT}
       - Database__NAME=${DB_NAME_AUTH_DB}
       - Database__USER=${DB_USER}
       - Database__PASSWORD=${DB_PASSWORD}
+      - Redis__PASSWORD=${REDIS_PASSWORD}
+      - Redis__HOST=${REDIS_HOST}
+      - Redis__PORT=${REDIS_PORT}
     depends_on:
       - auth_db
       - redis_db

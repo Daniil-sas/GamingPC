@@ -1,9 +1,12 @@
-﻿using AuthService.Domain.Models;
+﻿using AuthService.Application.DTOs.JwtToken;
+using AuthService.Domain.Models;
 
 namespace AuthService.Application.Interfaces.Auth
 {
     public interface IJwtProvider
     {
-        string GenerateToken(User user);
+        AccessToken GenerateToken(User user);
+
+        RefreshToken GenerateRefreshToken();
     }
 }

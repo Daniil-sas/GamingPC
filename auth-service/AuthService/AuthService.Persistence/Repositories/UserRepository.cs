@@ -36,7 +36,16 @@ namespace AuthService.Persistence.Repositories
         {
             var userEntity = await _dbContext.Users
                 .AsNoTracking()
-                .FirstOrDefaultAsync(f => f.Email == email) ?? throw new Exception();
+                .FirstOrDefaultAsync(f => f.Email == email);
+
+            return _mapper.Map<User>(userEntity);
+        }
+
+        public async Task<User> GetById(string userId)
+        {
+            var userEntity = await _dbContext.Users
+                .AsNoTracking()
+                .FirstOrDefaultAsync(f => f.Id.ToString() == userId);
 
             return _mapper.Map<User>(userEntity);
         }

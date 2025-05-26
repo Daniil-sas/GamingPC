@@ -11,7 +11,7 @@
             Login = login;
             Points = points;
         }
-
+        private User() { }
         public Guid Id { get; }
 
         public string UserName { get; } = string.Empty;

@@ -8,6 +8,7 @@ namespace AuthService.Application
         public static IServiceCollection AddApplication(this IServiceCollection services)
         {
             services.AddScoped<UserService>();
+            services.AddScoped<UpdateTokenService>();
 
             return services;
         }

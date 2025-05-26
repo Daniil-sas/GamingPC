@@ -20,11 +20,13 @@ namespace AuthService.Controllers
             return Results.Ok();
         }
 
-        private static async Task<IResult> Login(LoginUserRequest request, UserService userService)
+        private static async Task<IResult> Login(LoginUserRequest request, UserService userService, HttpContext context)
         {
             var token = await userService.Login(request.Email, request.Password);
 
-            //сохрнаить токен в куки
+            context.Response.Cookies.Append("token", token.AccessToken);
+            context.Response.Cookies.Append("refresh-token", token.RefreshToken);
+
             return Results.Ok(token);
         }
     }
