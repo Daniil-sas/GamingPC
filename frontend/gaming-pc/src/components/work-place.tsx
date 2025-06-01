@@ -1,15 +1,16 @@
 import { FC } from "react";
-import { Computer, Seat } from "../types/booking";
+import { Seat, Hall } from "../types/booking";
 import ComputerIcon from "../assets/icons/ComputerIcon";
 import CircleIcon from "../assets/icons/CircleIcon";
 
 interface WorkPlaceProbs {
     seat: Seat,
+    hall: Hall,
     clickOnComputer: () => void,
-    clickOnSeat: () => void,
+    clickOnSeat: (seat: Seat, hall: Hall) => void,
 }
 
-const WorkPlace: FC<WorkPlaceProbs> = ({ seat, clickOnComputer, clickOnSeat }) => {
+const WorkPlace: FC<WorkPlaceProbs> = ({ seat, hall, clickOnComputer, clickOnSeat }) => {
     return (
         <div className="flex flex-col items-center justify-center">
             <div className="w-full flex justify-center mb-0.5">
@@ -17,12 +18,13 @@ const WorkPlace: FC<WorkPlaceProbs> = ({ seat, clickOnComputer, clickOnSeat }) =
             </div>
 
             <div className="w-full flex justify-center">
-                <CircleIcon
-                    width={30}
-                    height={30}
-                    color={seat.isOccupied ? "red" : "green"}
-                    onSeatClick={clickOnSeat}
-                />
+                <button onClick={() => clickOnSeat(seat, hall)}>
+                    <CircleIcon
+                        width={30}
+                        height={30}
+                        color={seat.isOccupied ? "red" : "green"}
+                    />
+                </button>
             </div>
         </div>
     )

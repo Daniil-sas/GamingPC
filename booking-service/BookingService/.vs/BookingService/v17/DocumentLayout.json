@@ -1,12 +1,88 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "D:\\ProgrammProject\\Kursach\\booking-service\\BookingService\\",
-  "Documents": [],
+  "WorkspaceRootPath": "D:\\ProgrammProject\\Kursach\\GamingPC\\booking-service\\BookingService\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{CDBB2E31-A70D-4F6C-A95F-7D5AB3ACD2D3}|BookingService.Domain\\BookingService.Domain.csproj|d:\\programmproject\\kursach\\gamingpc\\booking-service\\bookingservice\\bookingservice.domain\\aggregates\\booking.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CDBB2E31-A70D-4F6C-A95F-7D5AB3ACD2D3}|BookingService.Domain\\BookingService.Domain.csproj|solutionrelative:bookingservice.domain\\aggregates\\booking.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CDBB2E31-A70D-4F6C-A95F-7D5AB3ACD2D3}|BookingService.Domain\\BookingService.Domain.csproj|d:\\programmproject\\kursach\\gamingpc\\booking-service\\bookingservice\\bookingservice.domain\\aggregates\\bookingplace.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CDBB2E31-A70D-4F6C-A95F-7D5AB3ACD2D3}|BookingService.Domain\\BookingService.Domain.csproj|solutionrelative:bookingservice.domain\\aggregates\\bookingplace.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CDBB2E31-A70D-4F6C-A95F-7D5AB3ACD2D3}|BookingService.Domain\\BookingService.Domain.csproj|d:\\programmproject\\kursach\\gamingpc\\booking-service\\bookingservice\\bookingservice.domain\\aggregates\\hall.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CDBB2E31-A70D-4F6C-A95F-7D5AB3ACD2D3}|BookingService.Domain\\BookingService.Domain.csproj|solutionrelative:bookingservice.domain\\aggregates\\hall.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CDBB2E31-A70D-4F6C-A95F-7D5AB3ACD2D3}|BookingService.Domain\\BookingService.Domain.csproj|d:\\programmproject\\kursach\\gamingpc\\booking-service\\bookingservice\\bookingservice.domain\\entities\\seat.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CDBB2E31-A70D-4F6C-A95F-7D5AB3ACD2D3}|BookingService.Domain\\BookingService.Domain.csproj|solutionrelative:bookingservice.domain\\entities\\seat.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": []
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Booking.cs",
+              "DocumentMoniker": "D:\\ProgrammProject\\Kursach\\GamingPC\\booking-service\\BookingService\\BookingService.Domain\\Aggregates\\Booking.cs",
+              "RelativeDocumentMoniker": "BookingService.Domain\\Aggregates\\Booking.cs",
+              "ToolTip": "D:\\ProgrammProject\\Kursach\\GamingPC\\booking-service\\BookingService\\BookingService.Domain\\Aggregates\\Booking.cs*",
+              "RelativeToolTip": "BookingService.Domain\\Aggregates\\Booking.cs*",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-02T16:46:57.484Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "BookingPlace.cs",
+              "DocumentMoniker": "D:\\ProgrammProject\\Kursach\\GamingPC\\booking-service\\BookingService\\BookingService.Domain\\Aggregates\\BookingPlace.cs",
+              "RelativeDocumentMoniker": "BookingService.Domain\\Aggregates\\BookingPlace.cs",
+              "ToolTip": "D:\\ProgrammProject\\Kursach\\GamingPC\\booking-service\\BookingService\\BookingService.Domain\\Aggregates\\BookingPlace.cs*",
+              "RelativeToolTip": "BookingService.Domain\\Aggregates\\BookingPlace.cs*",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-02T16:45:23.186Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Hall.cs",
+              "DocumentMoniker": "D:\\ProgrammProject\\Kursach\\GamingPC\\booking-service\\BookingService\\BookingService.Domain\\Aggregates\\Hall.cs",
+              "RelativeDocumentMoniker": "BookingService.Domain\\Aggregates\\Hall.cs",
+              "ToolTip": "D:\\ProgrammProject\\Kursach\\GamingPC\\booking-service\\BookingService\\BookingService.Domain\\Aggregates\\Hall.cs*",
+              "RelativeToolTip": "BookingService.Domain\\Aggregates\\Hall.cs*",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-02T16:45:04.22Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Seat.cs",
+              "DocumentMoniker": "D:\\ProgrammProject\\Kursach\\GamingPC\\booking-service\\BookingService\\BookingService.Domain\\Entities\\Seat.cs",
+              "RelativeDocumentMoniker": "BookingService.Domain\\Entities\\Seat.cs",
+              "ToolTip": "D:\\ProgrammProject\\Kursach\\GamingPC\\booking-service\\BookingService\\BookingService.Domain\\Entities\\Seat.cs",
+              "RelativeToolTip": "BookingService.Domain\\Entities\\Seat.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAgwBkAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-02T16:44:39.213Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
     }
   ]
 }

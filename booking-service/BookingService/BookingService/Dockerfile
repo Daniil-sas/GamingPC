@@ -10,6 +10,10 @@ FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
 COPY ["BookingService/BookingService.csproj", "BookingService/"]
+COPY ["BookingService.Application/BookingService.Application.csproj", "BookingService.Application/"]
+COPY ["BookingService.Domain/BookingService.Domain.csproj", "BookingService.Domain/"]
+COPY ["BookingService.Infrastructure/BookingService.Infrastructure.csproj", "BookingService.Infrastructure/"]
+COPY ["BookingService.Persistence/BookingService.Persistence.csproj", "BookingService.Persistence/"]
 RUN dotnet restore "./BookingService/BookingService.csproj"
 COPY . .
 WORKDIR "/src/BookingService"

@@ -47,7 +47,6 @@ const BookingMap: FC<BookingPlaceProps> = ({ halls, onSeatPress, street }) => {
                 {hall.name}
               </option>
             ))}
-            <p>Я вас ебал идите нахуй</p>
           </select>
           <p>Цена в час: {selectedHall?.price_per_hour} руб.</p>
         </div>
@@ -69,46 +68,51 @@ const BookingMap: FC<BookingPlaceProps> = ({ halls, onSeatPress, street }) => {
       </div>
 
       {selectedHall ? (
-        <div className="relative bg-gray-100 rounded-lg overflow-hidden border border-gray-200">
-          <div className="relative overflow-auto max-h-[95vh]">
-            <object
-              type="image/svg+xml"
-              data={selectedHall.floorPlanUrl}
-              className="w-full h-full"
-              aria-label="Карта помещения"
-            ></object>
+        <div className="flex gap-6 max-h-[59vh]">
+          <div className="relative bg-gray-100 rounded-lg overflow-hidden border border-gray-200 flex-1">
+            <div className="relative h-full">
+              <object
+                type="image/svg+xml"
+                data={selectedHall.floorPlanUrl}
+                aria-label="Карта помещения"
+              ></object>
 
-            {selectedHall.seats.map((seat) => (
-              // <button
-              //   key={seat.id}
-              //   className={`absolute transform -translate-x-1/2 -translate-y-1/2 w-8 h-8 rounded-full flex items-center justify-center
-              //     ${seat.isOccupied
-              //       ? 'bg-red-500 cursor-not-allowed'
-              //       : 'bg-green-500 hover:bg-green-600 cursor-pointer'
-              //     }`}
-              //   style={{ left: `${seat.x}%`, top: `${seat.y}%` }}
-              //   onClick={() => !seat.isOccupied && onSeatPress(seat)}
-              //   disabled={seat.isOccupied}
-              //   aria-label={`Место ${seat.id} - ${seat.isOccupied ? 'занято' : 'свободно'}`}
-              // >
-              //   <CircleIcon color="red" width={100} height={100}/>
-              //   <span className="text-xs text-white font-bold">{seat.id}</span>
-              // </button>
-              <div
-                key={seat.id}
-                className={`absolute rotate-[${seat.rotate}rad]`}
-                style={{
-                  left: `${seat.x}%`,
-                  top: `${seat.y}%`,
-                }}
-              >
-                <WorkPlace
-                  seat={seat}
-                  clickOnComputer={() => {}}
-                  clickOnSeat={() => {}}
-                />
+              {selectedHall.seats.map((seat) => (
+                <div
+                  key={seat.id}
+                  className="absolute"
+                  style={{
+                    left: `${seat.x}%`,
+                    top: `${seat.y}%`,
+                    rotate: `${seat.rotate}deg`,
+                  }}
+                >
+                  <WorkPlace
+                    seat={seat}
+                    hall={selectedHall}
+                    clickOnComputer={() => console.log(seat)}
+                    clickOnSeat={onSeatPress}
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+          <div className="w-1/3 bg-white rounded-lg overflow-y-auto">
+            <h3 className="text-lg font-semibold mb-4">Компьютеры в зале</h3>
+
+            <div className="space-y-4">
+              <div className="text-sm text-gray-600 mt-1">
+                <p>Монитор: {selectedHall.computer.monitor.join(", ")}</p>
+                <p>ОЗУ: {selectedHall.computer.ram}</p>
+                <p>Видеокарта: {selectedHall.computer.graphics_card}</p>
+                <p>Процессор: {selectedHall.computer.processor}</p>
+                <p>Интернет: {selectedHall.computer.internet}</p>
+                <p>Кресло: {selectedHall.computer.chair}</p>
+                <p>Память: {selectedHall.computer.disk}</p>
+                <p>Клавиатура: {selectedHall.computer.keyboard}</p>
+                <p>Мышь: {selectedHall.computer.mouse}</p>
               </div>
-            ))}
+            </div>
           </div>
         </div>
       ) : (
