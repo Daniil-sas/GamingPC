@@ -42,40 +42,48 @@ const BookingPage: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Here you would typically send the data to your backend
     console.log("Booking submitted:", formData);
     setIsSubmitted(true);
   };
 
   const bookingPlacePropsStub: BookingPlaceProps = {
-  halls: [
-    {
-      id: 1,
-      name: "Главный Зал",
-      floorPlanUrl: "/img/main-hall.svg",
-      seats: [
-        { id: 101, x: 5, y: 1, isOccupied: false},
-        { id: 102, x: 20, y: 1, isOccupied: true },
-        { id: 103, x: 35, y: 1, isOccupied: false },
-      ],
-      price_per_hour: 500
+    halls: [
+      {
+        id: 1,
+        name: "Главный Зал",
+        floorPlanUrl: "/img/main-hall.svg",
+        seats: [
+          { id: 101, x: 2, y: 1, rotate: 0, isOccupied: false },
+          { id: 101, x: 12, y: 1, rotate: 0, isOccupied: false },
+          { id: 101, x: 22, y: 1, rotate: 0, isOccupied: false },
+          { id: 101, x: 32, y: 1, rotate: 0, isOccupied: false },
+          { id: 101, x: 3, y: 20, rotate: -1.57, isOccupied: false },
+          { id: 103, x: 3, y: 25, rotate: -1.57, isOccupied: false },
+          { id: 102, x: 2, y: 92, rotate: 3.14, isOccupied: true },
+        ],
+        price_per_hour: 500,
+      },
+      {
+        id: 2,
+        name: "VIP Зал",
+        floorPlanUrl: "/img/main-hall.svg",
+        seats: [
+          { id: 101, x: 2, y: 1, rotate: 0, isOccupied: false },
+          { id: 101, x: 12, y: 1, rotate: 0, isOccupied: false },
+          { id: 101, x: 22, y: 1, rotate: 0, isOccupied: false },
+          { id: 101, x: 32, y: 1, rotate: 0, isOccupied: false },
+          { id: 101, x: 3, y: 20, rotate: -1.57, isOccupied: false },
+          { id: 103, x: 3, y: 25, rotate: -1.57, isOccupied: false },
+          { id: 102, x: 2, y: 92, rotate: 3.14, isOccupied: true },
+        ],
+        price_per_hour: 800,
+      },
+    ],
+    onSeatPress: (seat: Seat) => {
+      console.log("Seat pressed:", seat.id);
     },
-    {
-      id: 2,
-      name: "VIP Зал",
-      floorPlanUrl: "/img/main-hall.svg",
-      seats: [
-        { id: 201, x: 100, y: 50, isOccupied: false },
-        { id: 202, x: 120, y: 50, isOccupied: false },
-      ],
-      price_per_hour: 800
-    }
-  ],
-  onSeatPress: (seat: Seat) => {
-    console.log("Seat pressed:", seat.id);
-  },
-  street: "Main Street 123"
-};
+    street: "Main Street 123",
+  };
 
   const resetForm = () => {
     setFormData({
@@ -94,12 +102,10 @@ const BookingPage: React.FC = () => {
   return (
     <main className="flex-1 container mx-auto px-4 py-12">
       <div className="max-w-4xl mx-auto">
-        <h1 className="text-4xl font-bold text-gray-900 mb-2">
-          Resource Booking
-        </h1>
+        <h1 className="text-4xl font-bold text-gray-900 mb-2">Бронь места</h1>
         <p className="text-lg text-gray-600 mb-8">
-          Book our facilities for your tech projects, meetings, or study
-          sessions.
+          Никогда ещё pay-to-win не было настолько уместно, как при оплате места
+          за нашим компьютером.
         </p>
 
         <div className="grid md:grid-cols-3 gap-8 mb-12">
@@ -107,14 +113,12 @@ const BookingPage: React.FC = () => {
             <div className="w-12 h-12 bg-amber-600 rounded-lg flex items-center justify-center mb-4">
               <span className="text-white text-xl">🖥️</span>
             </div>
-            <h3 className="text-xl font-semibold mb-2">Computer Lab</h3>
-            <p className="text-gray-600 mb-4">
-              Access to high-performance computers with specialized software.
-            </p>
+            <h3 className="text-xl font-semibold mb-2">Компьютеры</h3>
+            <p className="text-gray-600 mb-4">Современное железо</p>
             <ul className="text-sm text-gray-500 space-y-1">
-              <li>• 20 workstations</li>
-              <li>• Development tools</li>
-              <li>• High-speed internet</li>
+              <li>• ОЗУ от 16 ГБ</li>
+              <li>• Видюха начиная с 4060</li>
+              <li>• Процессер AMD</li>
             </ul>
           </div>
 
@@ -122,14 +126,15 @@ const BookingPage: React.FC = () => {
             <div className="w-12 h-12 bg-amber-600 rounded-lg flex items-center justify-center mb-4">
               <span className="text-white text-xl">🏢</span>
             </div>
-            <h3 className="text-xl font-semibold mb-2">Meeting Rooms</h3>
+            <h3 className="text-xl font-semibold mb-2">Залы</h3>
             <p className="text-gray-600 mb-4">
-              Collaborative spaces for team meetings and discussions.
+              Комфортные помещения, чтобы ни что не мешало проявлятся вашим
+              скилам!
             </p>
             <ul className="text-sm text-gray-500 space-y-1">
-              <li>• Projector & whiteboard</li>
-              <li>• 10-15 person capacity</li>
-              <li>• Video conferencing</li>
+              <li>• Кондиционер</li>
+              <li>• Проффесиональное игровое кресло</li>
+              <li>• Уютная обстановка</li>
             </ul>
           </div>
 
@@ -137,19 +142,17 @@ const BookingPage: React.FC = () => {
             <div className="w-12 h-12 bg-amber-600 rounded-lg flex items-center justify-center mb-4">
               <span className="text-white text-xl">🎮</span>
             </div>
-            <h3 className="text-xl font-semibold mb-2">VR/AR Studio</h3>
-            <p className="text-gray-600 mb-4">
-              Experiment with virtual and augmented reality technologies.
-            </p>
+            <h3 className="text-xl font-semibold mb-2">Игры</h3>
+            <p className="text-gray-600 mb-4">Игры на любой вкус и цвет.</p>
             <ul className="text-sm text-gray-500 space-y-1">
-              <li>• VR headsets</li>
-              <li>• Motion capture</li>
-              <li>• Development kits</li>
+              <li>• Steam</li>
+              <li>• Epic Games</li>
+              <li>• И даже торрент</li>
             </ul>
           </div>
         </div>
 
-        <BookingMap { ...bookingPlacePropsStub }/>
+        <BookingMap {...bookingPlacePropsStub} />
 
         {isSubmitted ? (
           <div className="bg-green-50 border border-green-200 rounded-lg p-8 text-center">
@@ -181,7 +184,7 @@ const BookingPage: React.FC = () => {
           </div>
         ) : (
           <div className="bg-white rounded-lg border border-gray-200 p-8">
-            <h2 className="text-2xl font-semibold mb-6">Booking Form</h2>
+            <h2 className="text-2xl font-semibold mb-6">Бронирование</h2>
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
@@ -245,7 +248,7 @@ const BookingPage: React.FC = () => {
                     htmlFor="startTime"
                     className="block text-sm font-medium text-gray-700 mb-1"
                   >
-                    Start Time
+                    Со скольки
                   </label>
                   <input
                     type="time"
@@ -263,17 +266,19 @@ const BookingPage: React.FC = () => {
                     htmlFor="endTime"
                     className="block text-sm font-medium text-gray-700 mb-1"
                   >
-                    End Time
+                    Сколько часов
                   </label>
                   <input
-                    type="time"
-                    id="endTime"
-                    name="endTime"
-                    value={formData.endTime}
+                    type="number"
+                    id="attendees"
+                    name="attendees"
+                    value={formData.attendees}
                     onChange={handleInputChange}
+                    min="1"
                     className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent"
                     required
                   />
+                  <p className="text-red-500">Максимум 10 часов</p>
                 </div>
               </div>
 
@@ -282,7 +287,7 @@ const BookingPage: React.FC = () => {
                   htmlFor="resourceType"
                   className="block text-sm font-medium text-gray-700 mb-1"
                 >
-                  Resource Type
+                  Способ оплаты
                 </label>
                 <select
                   id="resourceType"
@@ -292,58 +297,37 @@ const BookingPage: React.FC = () => {
                   className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent"
                   required
                 >
-                  <option value="computer-lab">Computer Lab</option>
-                  <option value="meeting-room">Meeting Room</option>
-                  <option value="vr-studio">VR/AR Studio</option>
+                  <option value="cash">Наличными</option>
+                  <option value="credit-card">Картой</option>
+                  <option value="qr-code">QR Код</option>
                 </select>
               </div>
 
-              <div>
-                <label
-                  htmlFor="attendees"
-                  className="block text-sm font-medium text-gray-700 mb-1"
-                >
-                  Number of Attendees
-                </label>
-                <input
-                  type="number"
-                  id="attendees"
-                  name="attendees"
-                  value={formData.attendees}
-                  onChange={handleInputChange}
-                  min="1"
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent"
-                  required
-                />
-              </div>
+              <div className="grid md:grid-cols-3 gap-6">
+                <div className="text-gray-800 w-fit whitespace-nowrap">
+                  <span className="font-medium">Место:</span> {10}
+                </div>
+                <div className="text-gray-600 w-fit whitespace-nowrap">
+                  <span className="font-medium">Зал:</span> {"10"}
+                </div>
 
-              <div>
-                <label
-                  htmlFor="purpose"
-                  className="block text-sm font-medium text-gray-700 mb-1"
-                >
-                  Purpose of Booking
-                </label>
-                <textarea
-                  id="purpose"
-                  name="purpose"
-                  value={formData.purpose}
-                  onChange={handleInputChange}
-                  rows={4}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent"
-                  required
-                ></textarea>
-              </div>
-
-              <div className="flex justify-end">
-                <button
-                  type="submit"
-                  className="bg-amber-600 hover:bg-amber-700 text-white px-8 py-3 rounded-lg font-semibold transition-colors"
-                >
-                  Submit Booking
-                </button>
+                <div>
+                  <div className="text-gray-800 text-right">
+                    <span className="font-medium">Итоговая цена: </span>
+                    {(2222.24).toFixed(2)} руб.
+                  </div>
+                </div>
               </div>
             </form>
+
+            <div className="justify-end mt-10 text-right">
+              <button
+                type="submit"
+                className="bg-amber-600 hover:bg-amber-700 text-white px-8 py-3 rounded-lg font-semibold transition-colors"
+              >
+                Подтвердить бронирование
+              </button>
+            </div>
           </div>
         )}
       </div>

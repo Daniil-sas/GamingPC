@@ -1,7 +1,7 @@
 export interface Hall {
   id: number;
   name: string;
-  seats: Seat[]
+  seats: Seat[];
   floorPlanUrl: string;
   price_per_hour: number;
 }
@@ -10,6 +10,7 @@ export interface Seat {
   id: number;
   x: number;
   y: number;
+  rotate: number;
   isOccupied: boolean;
 }
 
@@ -20,13 +21,13 @@ export interface BookingPlaceProps {
 }
 
 export interface Computer {
-    montior: string[];
-    mouse: string;
-    keyboard: string;
-    cpu: string;
-    processor: string;
-    chair: string;
-    internet: string;
-    disk: string;
-    graphics_card: string;
+  montior: string[];
+  mouse: string;
+  keyboard: string;
+  cpu: string;
+  processor: string;
+  chair: string;
+  internet: string;
+  disk: string;
+  graphics_card: string;
 }
