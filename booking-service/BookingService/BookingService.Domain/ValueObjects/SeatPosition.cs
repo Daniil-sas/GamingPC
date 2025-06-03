@@ -1,6 +1,13 @@
-﻿using BookingService.Domain.Interfaces;
+﻿using BookingService.Domain.Common;
 
 namespace BookingService.Domain.ValueObjects
 {
-    public record SeatPosition(int X, int Y, int Rotate) : IValueObject;
+    public class SeatPosition(int X, int Y, int Rotate) : ValueObject
+    {
+        protected override IEnumerable<object> GetEqualityComponents()
+        {
+            yield return X;
+            yield return Y;
+        }
+    }
 }
