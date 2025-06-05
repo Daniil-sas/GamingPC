@@ -2,7 +2,7 @@ import type React from "react";
 
 const Footer: React.FC = () => {
   return (
-    <footer className="bg-gray-900 text-white py-8">
+    <footer className="bg-black text-white py-8">
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-4 gap-8">
           <div>
@@ -13,7 +13,7 @@ const Footer: React.FC = () => {
               <span className="text-lg font-bold">ZIENCLUB</span>
             </div>
             <p className="text-gray-400 text-sm">
-              Building the future through technology and community.
+              Играй и побеждай.
             </p>
           </div>
 

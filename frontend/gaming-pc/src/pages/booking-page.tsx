@@ -2,6 +2,8 @@ import { ChangeEvent, useState } from "react";
 import BookingMap from "../components/booking";
 import type React from "react";
 import { BookingPlaceProps, Hall, Seat } from "../types/booking";
+import { QRCodeSVG } from 'qrcode.react';
+import { useAuth } from "../context/AuthContext";
 
 interface BookingFormData {
   name: string;
@@ -13,17 +15,20 @@ interface BookingFormData {
 }
 
 const BookingPage: React.FC = () => {
+  const { user } = useAuth();
   const getTodayDate = () => {
     const today = new Date();
     return today.toISOString().split("T")[0];
   };
 
+  const date = new Date();
+
   const [formData, setFormData] = useState<BookingFormData>({
-    name: "",
-    email: "",
-    date: "",
+    name: user?.username ?? "",
+    email: user?.email ?? "",
+    date: date.getDate().toString(),
     startTime: getTodayDate(),
-    payment_method: "cash",
+    payment_method: "credit-card",
     countHour: 1,
   });
 
@@ -35,22 +40,49 @@ const BookingPage: React.FC = () => {
     hallName: "",
     numSeat: 0,
   });
+  const [isFormVisible, setIsFormVisible] = useState(false);
+  const [paymentDetails, setPaymentDetails] = useState({
+    cardNumber: '',
+    expiryDate: '',
+    cvv: '',
+  });
 
-  const handleInputChange = (
-    e: React.ChangeEvent<
-      HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
-    >
-  ) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLSelectElement | HTMLInputElement>) => {
     const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-  };
 
+    if (name === 'payment_method') {
+      setFormData(prev => ({
+        ...prev,
+        payment_method: value as 'cash' | 'credit-card' | 'qr-code',
+      }));
+    } else if (name.startsWith('card_')) {
+      setPaymentDetails(prev => ({
+        ...prev,
+        [name.replace('card_', '')]: value
+      }));
+    } else {
+      setFormData((prev) => ({
+        ...prev,
+        [name]: value,
+      }));
+    }
+  };
+  // Отображение формы оплаты
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Booking submitted:", formData);
+
+    if (!formData.payment_method) {
+      alert('Выберите способ оплаты');
+      return;
+    }
+
+    setIsFormVisible(true);
+  };
+
+  // Генерация QR-кода (пример данных: сумма + уникальный ID транзакции)
+  const generateQRCode = () => {
+    const transactionId = `TRX-${Math.random().toString(36).substr(2, 9)}`;
+    return `PAY:${formData.countHour * bookingInfo.priceInHall}:${transactionId}`;
   };
 
   const onChangeCoutHour = (e: ChangeEvent<HTMLInputElement>) => {
@@ -95,7 +127,7 @@ const BookingPage: React.FC = () => {
           disk: "2TB NVMe SSD",
           graphics_card: "NVIDIA RTX 4080",
         },
-        price_per_hour: 500,
+        price_per_hour: 150,
       },
       {
         id: 2,
@@ -122,7 +154,7 @@ const BookingPage: React.FC = () => {
           disk: "4TB NVMe SSD",
           graphics_card: "AMD RX 7900 XT",
         },
-        price_per_hour: 800,
+        price_per_hour: 300,
       },
     ],
     onSeatPress: (seat: Seat, hall: Hall) => {
@@ -302,13 +334,12 @@ const BookingPage: React.FC = () => {
                 </label>
                 <select
                   id="paymentMethod"
-                  name="paymentMethod"
+                  name="payment_method"
                   value={formData.payment_method}
                   onChange={handleInputChange}
                   className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent"
                   required
                 >
-                  <option value="cash">Наличными</option>
                   <option value="credit-card">Картой</option>
                   <option value="qr-code">QR Код</option>
                 </select>
@@ -336,11 +367,106 @@ const BookingPage: React.FC = () => {
             <div className="justify-end mt-10 text-right">
               <button
                 type="submit"
+                onClick={() => setIsFormVisible(true)}
                 className="bg-amber-600 hover:bg-amber-700 text-white px-8 py-3 rounded-lg font-semibold transition-colors"
               >
                 Подтвердить бронирование
               </button>
             </div>
+            {isFormVisible && (
+              <div className="mt-6 p-4 bg-gray-50 rounded-lg animate-fade-in">
+                {formData.payment_method === 'credit-card' && (
+                  <div className="space-y-4">
+                    <h3 className="text-lg font-semibold mb-2">Введите данные карты</h3>
+
+                    <div>
+                      <label className="block text-sm text-gray-600 mb-1">Номер карты</label>
+                      <input
+                        type="text"
+                        name="card_cardNumber"
+                        value={paymentDetails.cardNumber}
+                        onChange={handleInputChange}
+                        placeholder="1234 5678 9012 3456"
+                        className="w-full px-3 py-2 border border-gray-300 rounded-lg"
+                        maxLength={19}
+                        required
+                      />
+                    </div>
+
+                    <div className="flex space-x-4">
+                      <div className="flex-1">
+                        <label className="block text-sm text-gray-600 mb-1">Срок действия</label>
+                        <input
+                          type="text"
+                          name="card_expiryDate"
+                          value={paymentDetails.expiryDate}
+                          onChange={handleInputChange}
+                          placeholder="MM/YY"
+                          className="w-full px-3 py-2 border border-gray-300 rounded-lg"
+                          maxLength={5}
+                          required
+                        />
+                      </div>
+
+                      <div className="flex-1">
+                        <label className="block text-sm text-gray-600 mb-1">CVV</label>
+                        <input
+                          type="password"
+                          name="card_cvv"
+                          value={paymentDetails.cvv}
+                          onChange={handleInputChange}
+                          placeholder="123"
+                          className="w-full px-3 py-2 border border-gray-300 rounded-lg"
+                          maxLength={4}
+                          required
+                        />
+                      </div>
+                    </div>
+
+                    <button
+                      type="button"
+                      onClick={() => {
+                        console.log('Оплата картой:', paymentDetails);
+                        alert('Оплата картой прошла успешно!');
+                        setIsFormVisible(false);
+                      }}
+                      className="w-full bg-amber-600 text-white py-2 px-4 rounded-lg hover:bg-green-600 transition"
+                    >
+                      Подтвердить оплату картой
+                    </button>
+                  </div>
+                )}
+
+                {formData.payment_method === 'qr-code' && (
+                  <div className="space-y-4 text-center">
+                    <h3 className="text-lg font-semibold mb-2">Отсканируйте QR-код для оплаты</h3>
+
+                    <div className="mx-auto w-48 h-48 bg-white border border-gray-300 rounded-lg">
+                      <QRCodeSVG
+                        value={generateQRCode()}
+                        bgColor="#ffffff"
+                        size={190}
+                        fgColor="#000000"
+                        level="L"
+                      />
+                    </div>
+
+                    <p className="text-sm text-gray-500">
+                      Или сохраните QR-код и оплатите через приложение банка
+                    </p>
+                  </div>
+                )}
+
+                {/* Кнопка отмены */}
+                <button
+                  type="button"
+                  onClick={() => setIsFormVisible(false)}
+                  className="mt-4 w-full text-amber-500 hover:text-amber-700 transition"
+                >
+                  Отмена
+                </button>
+              </div>
+            )}
           </div>
         ) : (
           <></>

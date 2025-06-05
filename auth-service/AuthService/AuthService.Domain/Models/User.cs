@@ -2,14 +2,13 @@
 {
     public class User
     {
-        private User(Guid id, string userName, string email, string passwordHash, string login, int points)
+        private User(Guid id, string userName, string email, string passwordHash, string login)
         {
             Id = id;
             UserName = userName;
             Email = email;
             PasswordHash = passwordHash;
             Login = login;
-            Points = points;
         }
         private User() { }
         public Guid Id { get; }
@@ -22,11 +21,10 @@
 
         public string Login { get; } = string.Empty;
 
-        public int Points { get; }
 
-        public static User Create(Guid id, string userName, string email, string passwordHash, string login, int points)
+        public static User Create(Guid id, string userName, string email, string passwordHash, string login)
         {
-            return new User(id, userName, email, passwordHash, login, points);
+            return new User(id, userName, email, passwordHash, login);
         }
     }
 }

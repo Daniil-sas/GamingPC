@@ -48,7 +48,7 @@ namespace AuthService.Application.Services
 
             var hashedPassword = _passwordHasher.Generate(password);
 
-            var user = User.Create(Guid.NewGuid(), userName, email, hashedPassword, login, 0);
+            var user = User.Create(Guid.NewGuid(), userName, email, hashedPassword, login);
 
             await _userRepository.Add(user);
         }

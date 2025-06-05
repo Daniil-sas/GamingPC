@@ -7,11 +7,12 @@ namespace BookingService.Domain.Aggregates
 {
     public class Hall : Entity
     {
-        private Hall(string name, string floorPlanUrl, double pricePerHouse, List<Seat> seats, ComputerSpec computer)
+        private Hall(Guid bookingPlaceId, string name, string floorPlanUrl, double pricePerHouse, List<Seat> seats, ComputerSpec computer)
         {
+            BookingPlaceId = bookingPlaceId;
             Name = name;
             FloorPlanUrl = floorPlanUrl;
-            PricePerHouse = pricePerHouse;
+            PricePerHour = pricePerHouse;
             Seats = seats;
             Computer = computer;
         }
@@ -20,9 +21,10 @@ namespace BookingService.Domain.Aggregates
 
         }
 
+        public Guid BookingPlaceId { get; }
         public string Name { get; } = string.Empty;
         public string FloorPlanUrl { get; } = string.Empty;
-        public double PricePerHouse { get; }
+        public double PricePerHour { get; }
         public List<Seat> Seats { get; }
         public ComputerSpec Computer { get; }
 
@@ -34,9 +36,9 @@ namespace BookingService.Domain.Aggregates
             Seats.Add(seat);
         }
 
-        public static Hall Create(string name, string floorPlanUrl, double pricePerHouse, List<Seat> seat, ComputerSpec computer)
+        public static Hall Create(Guid bookingPlaceId, string name, string floorPlanUrl, double pricePerHouse, List<Seat> seat, ComputerSpec computer)
         {
-            return new Hall(name, floorPlanUrl, pricePerHouse, seat, computer);
+            return new Hall(bookingPlaceId, name, floorPlanUrl, pricePerHouse, seat, computer);
         }
     }
 }

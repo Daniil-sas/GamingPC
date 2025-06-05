@@ -1,5 +1,6 @@
 import { useState } from "react";
 import type React from "react";
+import { useAuth } from "../context/AuthContext";
 
 interface ContactFormData {
   name: string;
@@ -9,12 +10,14 @@ interface ContactFormData {
 }
 
 const ContactPage: React.FC = () => {
+  const { user } = useAuth();
   const [formData, setFormData] = useState<ContactFormData>({
-    name: "",
-    email: "",
+    name: user?.username ?? "",
+    email: user?.email ?? "",
     subject: "",
     message: "",
   });
+
 
   const [isSubmitted, setIsSubmitted] = useState(false);
 
@@ -30,7 +33,7 @@ const ContactPage: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Here you would typically send the data to your backend
+    
     console.log("Contact form submitted:", formData);
     setIsSubmitted(true);
   };
@@ -48,9 +51,9 @@ const ContactPage: React.FC = () => {
   return (
     <main className="flex-1 container mx-auto px-4 py-12">
       <div className="max-w-5xl mx-auto">
-        <h1 className="text-4xl font-bold text-gray-900 mb-2">Contact Us</h1>
+        <h1 className="text-4xl font-bold text-gray-900 mb-2">Свяжитесь с нами</h1>
         <p className="text-lg text-gray-600 mb-12">
-          Have questions or want to get involved? Reach out to our team.
+          Есть вопросы? Не тяните, с радостью ответим на них.
         </p>
 
         <div className="grid md:grid-cols-2 gap-12">
@@ -74,23 +77,22 @@ const ContactPage: React.FC = () => {
                   </svg>
                 </div>
                 <h3 className="text-2xl font-semibold text-gray-900 mb-2">
-                  Message Sent!
+                  Вопрос отправлен!
                 </h3>
                 <p className="text-gray-600 mb-6">
-                  Thank you for reaching out. We'll get back to you as soon as
-                  possible.
+                  Спасибо вам! Свяжемся с вами как можно скорее!
                 </p>
                 <button
                   onClick={resetForm}
                   className="bg-amber-600 hover:bg-amber-700 text-white px-6 py-2 rounded-lg font-semibold transition-colors"
                 >
-                  Send Another Message
+                  Отправить ещё одно сообщение
                 </button>
               </div>
             ) : (
               <div className="bg-white rounded-lg border border-gray-200 p-8">
                 <h2 className="text-2xl font-semibold mb-6">
-                  Send us a message
+                  Отправьте нам сообщение
                 </h2>
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div>
@@ -98,7 +100,7 @@ const ContactPage: React.FC = () => {
                       htmlFor="name"
                       className="block text-sm font-medium text-gray-700 mb-1"
                     >
-                      Full Name
+                      Полное имя
                     </label>
                     <input
                       type="text"
@@ -116,7 +118,7 @@ const ContactPage: React.FC = () => {
                       htmlFor="email"
                       className="block text-sm font-medium text-gray-700 mb-1"
                     >
-                      Email Address
+                      Почта
                     </label>
                     <input
                       type="email"
@@ -134,7 +136,7 @@ const ContactPage: React.FC = () => {
                       htmlFor="subject"
                       className="block text-sm font-medium text-gray-700 mb-1"
                     >
-                      Subject
+                      Тема
                     </label>
                     <input
                       type="text"
@@ -152,7 +154,7 @@ const ContactPage: React.FC = () => {
                       htmlFor="message"
                       className="block text-sm font-medium text-gray-700 mb-1"
                     >
-                      Message
+                      Сообщение
                     </label>
                     <textarea
                       id="message"
@@ -170,7 +172,7 @@ const ContactPage: React.FC = () => {
                       type="submit"
                       className="w-full bg-amber-600 hover:bg-amber-700 text-white px-6 py-3 rounded-lg font-semibold transition-colors"
                     >
-                      Send Message
+                      Отправить
                     </button>
                   </div>
                 </form>
@@ -180,7 +182,7 @@ const ContactPage: React.FC = () => {
 
           <div className="space-y-8">
             <div className="bg-gray-50 rounded-lg border border-gray-200 p-8">
-              <h3 className="text-xl font-semibold mb-4">Club Information</h3>
+              <h3 className="text-xl font-semibold mb-4">Информация о нас</h3>
               <div className="space-y-4">
                 <div className="flex items-start space-x-3">
                   <div className="w-10 h-10 bg-amber-100 rounded-full flex items-center justify-center flex-shrink-0">
@@ -206,11 +208,11 @@ const ContactPage: React.FC = () => {
                     </svg>
                   </div>
                   <div>
-                    <h4 className="font-medium text-gray-900">Address</h4>
+                    <h4 className="font-medium text-gray-900">Аддрес</h4>
                     <p className="text-gray-600">
-                      123 Tech Avenue, Suite 101
+                      Улица Пушкина, дом Колотушкина
                       <br />
-                      San Francisco, CA 94107
+                      Тридевять земель
                     </p>
                   </div>
                 </div>
@@ -233,9 +235,9 @@ const ContactPage: React.FC = () => {
                     </svg>
                   </div>
                   <div>
-                    <h4 className="font-medium text-gray-900">Email</h4>
-                    <p className="text-gray-600">info@techclub.com</p>
-                    <p className="text-gray-600">support@techclub.com</p>
+                    <h4 className="font-medium text-gray-900">Почта</h4>
+                    <p className="text-gray-600">info@zien.com</p>
+                    <p className="text-gray-600">support@zienclub.com</p>
                   </div>
                 </div>
 
@@ -257,8 +259,8 @@ const ContactPage: React.FC = () => {
                     </svg>
                   </div>
                   <div>
-                    <h4 className="font-medium text-gray-900">Phone</h4>
-                    <p className="text-gray-600">(123) 456-7890</p>
+                    <h4 className="font-medium text-gray-900">Телефон</h4>
+                    <p className="text-gray-600">+7(800) 555-35-35</p>
                   </div>
                 </div>
 
@@ -280,17 +282,17 @@ const ContactPage: React.FC = () => {
                     </svg>
                   </div>
                   <div>
-                    <h4 className="font-medium text-gray-900">Hours</h4>
-                    <p className="text-gray-600">Monday - Friday: 9AM - 8PM</p>
-                    <p className="text-gray-600">Saturday: 10AM - 6PM</p>
-                    <p className="text-gray-600">Sunday: Closed</p>
+                    <h4 className="font-medium text-gray-900">Часы работы</h4>
+                    <p className="text-gray-600">Понедельник - Пятница: 8:00 - 20:00</p>
+                    <p className="text-gray-600">Суббота: 10:00 - 19:00</p>
+                    <p className="text-gray-600">Воскресенье: Выходной</p>
                   </div>
                 </div>
               </div>
             </div>
 
             <div className="bg-gray-50 rounded-lg border border-gray-200 p-8">
-              <h3 className="text-xl font-semibold mb-4">Connect With Us</h3>
+              <h3 className="text-xl font-semibold mb-4">Свяжитесь с нами</h3>
               <div className="flex space-x-4">
                 <a
                   href="#"
@@ -341,28 +343,6 @@ const ContactPage: React.FC = () => {
                   </svg>
                 </a>
               </div>
-            </div>
-
-            <div className="bg-gray-900 text-white rounded-lg p-8">
-              <h3 className="text-xl font-semibold mb-4">Newsletter</h3>
-              <p className="text-gray-300 mb-4">
-                Subscribe to our newsletter to get updates on events, workshops,
-                and tech news.
-              </p>
-              <form className="flex">
-                <input
-                  type="email"
-                  placeholder="Your email address"
-                  className="flex-1 px-3 py-2 bg-gray-800 border border-gray-700 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent"
-                  required
-                />
-                <button
-                  type="submit"
-                  className="bg-amber-600 hover:bg-amber-700 px-4 py-2 rounded-r-lg font-semibold transition-colors"
-                >
-                  Subscribe
-                </button>
-              </form>
             </div>
           </div>
         </div>

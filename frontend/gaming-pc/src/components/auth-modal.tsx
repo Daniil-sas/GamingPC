@@ -1,12 +1,6 @@
 import type React from "react";
 import { useState } from "react";
-
-interface User {
-  id: string;
-  username: string;
-  email: string;
-  avatar?: string;
-}
+import { User } from "../types/auth";
 
 interface AuthModalProps {
   isOpen: boolean;
@@ -17,6 +11,7 @@ interface AuthModalProps {
 const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose, onLogin }) => {
   const [isLoginMode, setIsLoginMode] = useState(true);
   const [formData, setFormData] = useState({
+    login: "",
     username: "",
     email: "",
     password: "",
@@ -36,6 +31,8 @@ const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose, onLogin }) => {
     if (isLoginMode) {
       const user: User = {
         id: "1",
+        login: formData.login || "danya",
+        password: formData.password || "das",
         username: formData.username || "user123",
         email: formData.email || "user@example.com",
       };
@@ -47,6 +44,8 @@ const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose, onLogin }) => {
       }
       const user: User = {
         id: "1",
+        login: formData.login,
+        password: formData.password,
         username: formData.username,
         email: formData.email,
       };
@@ -54,6 +53,7 @@ const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose, onLogin }) => {
     }
 
     setFormData({
+      login: "",
       username: "",
       email: "",
       password: "",
@@ -68,7 +68,7 @@ const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose, onLogin }) => {
       <div className="bg-white rounded-lg p-8 w-full max-w-md mx-4">
         <div className="flex justify-between items-center mb-6">
           <h2 className="text-2xl font-bold text-gray-900">
-            {isLoginMode ? "Login" : "Register"}
+            {isLoginMode ? "Вход" : "Регистрация"}
           </h2>
           <button
             onClick={onClose}
@@ -79,37 +79,19 @@ const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose, onLogin }) => {
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-4">
-          <div>
-            <label
-              htmlFor="username"
-              className="block text-sm font-medium text-gray-700 mb-1"
-            >
-              Username
-            </label>
-            <input
-              type="text"
-              id="username"
-              name="username"
-              value={formData.username}
-              onChange={handleInputChange}
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent"
-              required
-            />
-          </div>
-
           {!isLoginMode && (
             <div>
               <label
-                htmlFor="email"
+                htmlFor="username"
                 className="block text-sm font-medium text-gray-700 mb-1"
               >
-                Email
+                Логин
               </label>
               <input
-                type="email"
-                id="email"
-                name="email"
-                value={formData.email}
+                type="text"
+                id="username"
+                name="username"
+                value={formData.username}
                 onChange={handleInputChange}
                 className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent"
                 required
@@ -119,10 +101,28 @@ const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose, onLogin }) => {
 
           <div>
             <label
+              htmlFor="email"
+              className="block text-sm font-medium text-gray-700 mb-1"
+            >
+              Почта
+            </label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              value={formData.email}
+              onChange={handleInputChange}
+              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent"
+              required
+            />
+          </div>
+
+          <div>
+            <label
               htmlFor="password"
               className="block text-sm font-medium text-gray-700 mb-1"
             >
-              Password
+              Пароль
             </label>
             <input
               type="password"
@@ -141,7 +141,7 @@ const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose, onLogin }) => {
                 htmlFor="confirmPassword"
                 className="block text-sm font-medium text-gray-700 mb-1"
               >
-                Confirm Password
+                Подтверждение пароля
               </label>
               <input
                 type="password"
@@ -159,20 +159,20 @@ const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose, onLogin }) => {
             type="submit"
             className="w-full bg-amber-600 hover:bg-amber-700 text-white py-2 px-4 rounded-lg font-semibold transition-colors"
           >
-            {isLoginMode ? "Login" : "Register"}
+            {isLoginMode ? "Вход" : "Регистрация"}
           </button>
         </form>
 
         <div className="mt-6 text-center">
           <p className="text-sm text-gray-600">
             {isLoginMode
-              ? "Don't have an account? "
-              : "Already have an account? "}
+              ? "Нет аккаунта? "
+              : "Уже есть аккаунт? "}
             <button
               onClick={() => setIsLoginMode(!isLoginMode)}
               className="text-amber-600 hover:text-amber-700 font-semibold"
             >
-              {isLoginMode ? "Register" : "Login"}
+              {isLoginMode ? "Зарегистрироваться" : "Войти"}
             </button>
           </p>
         </div>

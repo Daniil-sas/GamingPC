@@ -14,64 +14,64 @@ const FaqPage: React.FC = () => {
 
   const faqItems: FaqItem[] = [
     {
-      question: "How do I become a member of TechClub?",
+      question: "Как стать участником компьютерного клуба «Игровой Хаб»?",
       answer:
-        "To become a member, you need to fill out the membership application form on our website and pay the annual membership fee. After submitting your application, you'll receive a confirmation email with further instructions.",
-      category: "membership",
+        "Чтобы стать участником, необходимо зарегистрироваться на сайте и выбрать подходящий тарифный план. После оплаты вы получите подтверждение на email и сможете забронировать место или принять участие в мероприятиях.",
+      category: "членство",
     },
     {
-      question: "What are the membership benefits?",
+      question: "Какие преимущества дает участие в клубе?",
       answer:
-        "Members get access to our facilities, workshops, events, and resources. You'll also be able to participate in club projects, networking opportunities, and receive discounts on paid workshops and events.",
-      category: "membership",
+        "Участникам доступны мощные игровые ПК.",
+      category: "членство",
     },
     {
-      question: "How much is the membership fee?",
+      question: "Сколько стоит посещение клуба?",
       answer:
-        "The annual membership fee is $50 for students, $75 for professionals, and $200 for corporate memberships. We also offer monthly payment options.",
-      category: "membership",
+        "Стоимость посещения — от 150 рублей в час.",
+      category: "членство",
     },
     {
-      question: "Can I book club resources without being a member?",
+      question: "Можно ли бронировать места без регистрации?",
       answer:
-        "Non-members can book certain resources at a higher rate, but priority is given to members. Some specialized equipment and spaces are exclusively available to members.",
-      category: "booking",
+        "Да, не зарегистрированные пользователи могут бронировать места, но с ограничениями: повышенная стоимость, ограниченный доступ к VR-зонам и запрет на участие в закрытых мероприятиях.",
+      category: "бронирование",
     },
     {
-      question: "How far in advance should I book resources?",
+      question: "Забронируйте место заранее",
       answer:
-        "We recommend booking at least 48 hours in advance for regular resources and 1 week in advance for specialized equipment or larger spaces. Peak times may require earlier bookings.",
-      category: "booking",
+        "Рекомендуется бронировать места за 24 часа до посещения для стандартных залов и за 3 дня для VR-зон или LAN-партий. В пиковые часы (вечер/выходные) бронирование лучше делать за неделю.",
+      category: "бронирование",
     },
     {
-      question: "What happens if I need to cancel my booking?",
+      question: "Что делать, если нужно отменить бронь?",
       answer:
-        "Cancellations made 24 hours or more before the booking time will receive a full refund or credit. Late cancellations may be subject to a cancellation fee or no refund, depending on the resource.",
-      category: "booking",
+        "Отмена брони за 12 часов и более — бесплатная. При отмене менее чем за 12 часов взимается 50% от стоимости. Полный возврат возможен только при наличии технических проблем в клубе.",
+      category: "бронирование",
     },
     {
-      question: "What types of events does TechClub organize?",
+      question: "Какие мероприятия организует клуб?",
       answer:
-        "We organize a variety of events including workshops, hackathons, tech talks, networking sessions, project showcases, and social gatherings. Check our events calendar for upcoming activities.",
-      category: "events",
+        "Мы проводим киберспортивные турниры (CS:GO, Dota 2), мастер-классы по геймдизайну, хакатоны, VR-квесты и тематические вечеринки. Актуальное расписание доступно в разделе «Мероприятия».",
+      category: "мероприятия",
     },
     {
-      question: "Can I propose or host an event at TechClub?",
+      question: "Можно ли организовать свое мероприятие в клубе?",
       answer:
-        "Yes! We encourage members to propose and host events. Submit your event proposal through the member portal, and our events team will review it and get back to you.",
-      category: "events",
+        "Да! Мы предоставляем площадку для проведения локальных турниров, стриминговых вечеров и IT-митапов. Подайте заявку через личный кабинет, и наш менеджер свяжется с вами для согласования деталей.",
+      category: "мероприятия",
     },
     {
-      question: "Do you offer any programming courses or training?",
+      question: "Есть ли в клубе обучающие программы?",
       answer:
-        "Yes, we offer regular workshops and training sessions on various programming languages, frameworks, and technologies. Some are free for members, while others have a nominal fee.",
-      category: "learning",
+        "Мы регулярно проводим курсы по работе с Unreal Engine, Blender и программированию на Python/C#. Некоторые занятия бесплатны для участников с абонементом, другие требуют дополнительной регистрации.",
+      category: "обучение",
     },
     {
-      question: "How can I contribute to club projects?",
+      question: "Как участвовать в совместных проектах клуба?",
       answer:
-        "Members can join existing projects or propose new ones. Browse the projects section in the member portal to see ongoing projects and how to join them. Project leads regularly post when they need additional team members.",
-      category: "projects",
+        "В личном кабинете доступен раздел «Проекты», где можно присоединиться к командам разработчиков, дизайнеров или тестировщиков. Руководители проектов публикуют открытые вакансии по мере необходимости.",
+      category: "проекты",
     },
   ];
 
@@ -103,18 +103,17 @@ const FaqPage: React.FC = () => {
     <main className="flex-1 container mx-auto px-4 py-12">
       <div className="max-w-4xl mx-auto">
         <h1 className="text-4xl font-bold text-gray-900 mb-2">
-          Frequently Asked Questions
+          Часто задаваемые вопросы
         </h1>
         <p className="text-lg text-gray-600 mb-8">
-          Find answers to common questions about TechClub membership, resources,
-          and activities.
+          Все часто задаваемые вопросы
         </p>
 
         <div className="mb-8">
           <div className="relative">
             <input
               type="text"
-              placeholder="Search FAQs..."
+              placeholder="Поиск..."
               value={searchQuery}
               onChange={handleSearch}
               className="w-full px-4 py-3 pl-10 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent"
@@ -141,11 +140,10 @@ const FaqPage: React.FC = () => {
             <button
               key={category}
               onClick={() => setActiveCategory(category)}
-              className={`px-4 py-2 rounded-full text-sm font-medium capitalize transition-colors ${
-                activeCategory === category
+              className={`px-4 py-2 rounded-full text-sm font-medium capitalize transition-colors ${activeCategory === category
                   ? "bg-amber-600 text-white"
                   : "bg-gray-100 text-gray-700 hover:bg-gray-200"
-              }`}
+                }`}
             >
               {category}
             </button>
@@ -161,16 +159,14 @@ const FaqPage: React.FC = () => {
               >
                 <button
                   onClick={() => toggleAccordion(index)}
-                  className={`w-full flex justify-between items-center p-4 text-left font-medium focus:outline-none ${
-                    activeIndex === index ? "bg-gray-50" : "bg-white"
-                  }`}
+                  className={`w-full flex justify-between items-center p-4 text-left font-medium focus:outline-none ${activeIndex === index ? "bg-gray-50" : "bg-white"
+                    }`}
                 >
                   <span className="text-gray-900">{faq.question}</span>
                   <span className="ml-4 flex-shrink-0">
                     <svg
-                      className={`w-5 h-5 transition-transform ${
-                        activeIndex === index ? "transform rotate-180" : ""
-                      }`}
+                      className={`w-5 h-5 transition-transform ${activeIndex === index ? "transform rotate-180" : ""
+                        }`}
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -186,11 +182,10 @@ const FaqPage: React.FC = () => {
                   </span>
                 </button>
                 <div
-                  className={`transition-all duration-200 ease-in-out overflow-hidden ${
-                    activeIndex === index
+                  className={`transition-all duration-200 ease-in-out overflow-hidden ${activeIndex === index
                       ? "max-h-96 p-4 bg-gray-50"
                       : "max-h-0"
-                  }`}
+                    }`}
                 >
                   <p className="text-gray-600">{faq.answer}</p>
                   <div className="mt-2 pt-2 border-t border-gray-100">
@@ -220,11 +215,10 @@ const FaqPage: React.FC = () => {
                 </svg>
               </div>
               <h3 className="text-xl font-semibold text-gray-900 mb-2">
-                No results found
+                Нет результатов
               </h3>
               <p className="text-gray-600">
-                We couldn't find any FAQs matching your search. Try different
-                keywords or browse by category.
+                Напишите по другому, либо задайте вопрос напрямую нам
               </p>
             </div>
           )}
@@ -232,11 +226,10 @@ const FaqPage: React.FC = () => {
 
         <div className="mt-12 p-6 bg-amber-50 border border-amber-100 rounded-lg">
           <h2 className="text-xl font-semibold text-gray-900 mb-4">
-            Still have questions?
+            Остались вопросы?
           </h2>
           <p className="text-gray-600 mb-6">
-            If you couldn't find the answer you were looking for, feel free to
-            reach out to our team directly.
+            Смело задавайте им нам. Для этого стоит перейти на страницу "Контакты"
           </p>
         </div>
       </div>

@@ -16,7 +16,6 @@ namespace BookingService.Domain.Models
         }
         public SeatPosition SeatPosition { get; }
         public int NumSeatInHall { get; }
-        public DateTime OccupiedTime { get; }
 
         public static Seat Create(SeatPosition seatPosition, int numSeatInHall)
         {

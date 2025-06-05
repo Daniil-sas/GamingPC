@@ -1,12 +1,6 @@
 import type React from "react";
 import Logo from "../assets/icons/LogoIcon";
-
-interface User {
-  id: string;
-  username: string;
-  email: string;
-  avatar?: string;
-}
+import { User } from "../types/auth";
 
 interface HeaderProps {
   user: User | null;
@@ -15,6 +9,28 @@ interface HeaderProps {
 }
 
 const Header: React.FC<HeaderProps> = ({ user, onLoginClick, onLogout }) => {
+
+  const getUserFromLocalStorage = (): boolean => {
+    const userData = localStorage.getItem('user');
+
+    if (!userData) {
+      return false;
+    }
+
+    try {
+      const parsedUser = JSON.parse(userData);
+
+      if (parsedUser && typeof parsedUser === 'object' && 'id' in parsedUser && 'login' in parsedUser && 'email' in parsedUser) {
+        user = parsedUser;
+        return true;
+      }
+
+      return false;
+    } catch (error) {
+      console.error('Ошибка парсинга данных пользователя', error);
+      return false;
+    }
+  }
   return (
     <header className="bg-black text-white shadow-lg">
       <div className="container mx-auto px-4 py-4 flex items-center justify-between">
@@ -46,29 +62,29 @@ const Header: React.FC<HeaderProps> = ({ user, onLoginClick, onLogout }) => {
         </nav>
 
         <div className="flex items-center space-x-4">
-          {user ? (
+          {getUserFromLocalStorage() ? (
             <div className="flex items-center space-x-3">
               <div className="flex items-center space-x-2">
                 <div className="w-8 h-8 bg-amber-600 rounded-full flex items-center justify-center">
                   <span className="text-white text-sm font-semibold">
-                    {user.avatar ? (
+                    {user!.avatar ? (
                       <img
-                        src={user.avatar || "/placeholder.svg"}
-                        alt={user.username}
+                        src={user!.avatar || "/placeholder.svg"}
+                        alt={user!.username}
                         className="w-8 h-8 rounded-full"
                       />
                     ) : (
-                      user.username.charAt(0).toUpperCase()
+                      user!.login?.charAt(0).toUpperCase()
                     )}
                   </span>
                 </div>
-                <span className="text-sm font-medium">{user.username}</span>
+                <span className="text-sm font-medium">{user!.email}</span>
               </div>
               <button
                 onClick={onLogout}
                 className="text-sm text-gray-300 hover:text-white transition-colors"
               >
-                Logout
+                Выход
               </button>
             </div>
           ) : (
@@ -81,7 +97,6 @@ const Header: React.FC<HeaderProps> = ({ user, onLoginClick, onLogout }) => {
           )}
         </div>
 
-        {/* Mobile menu button */}
         <button className="md:hidden">
           <svg
             className="w-6 h-6"

@@ -1,46 +1,38 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "D:\\ProgrammProject\\Kursach\\booking-service\\BookingService\\",
+  "WorkspaceRootPath": "D:\\ProgrammProject\\Kursach\\GamingPC\\booking-service\\BookingService\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{CDBB2E31-A70D-4F6C-A95F-7D5AB3ACD2D3}|BookingService.Domain\\BookingService.Domain.csproj|d:\\programmproject\\kursach\\booking-service\\bookingservice\\bookingservice.domain\\interfaces\\services\\ibookingpolicyservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CDBB2E31-A70D-4F6C-A95F-7D5AB3ACD2D3}|BookingService.Domain\\BookingService.Domain.csproj|solutionrelative:bookingservice.domain\\interfaces\\services\\ibookingpolicyservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{299ED0C8-42E8-4658-9EB1-4D33B5BF64E0}|BookingService.Persistence\\BookingService.Persistence.csproj|d:\\programmproject\\kursach\\gamingpc\\booking-service\\bookingservice\\bookingservice.persistence\\configuration\\hallconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{299ED0C8-42E8-4658-9EB1-4D33B5BF64E0}|BookingService.Persistence\\BookingService.Persistence.csproj|solutionrelative:bookingservice.persistence\\configuration\\hallconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CDBB2E31-A70D-4F6C-A95F-7D5AB3ACD2D3}|BookingService.Domain\\BookingService.Domain.csproj|d:\\programmproject\\kursach\\booking-service\\bookingservice\\bookingservice.domain\\interfaces\\services\\iseatoccupiedservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CDBB2E31-A70D-4F6C-A95F-7D5AB3ACD2D3}|BookingService.Domain\\BookingService.Domain.csproj|solutionrelative:bookingservice.domain\\interfaces\\services\\iseatoccupiedservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{299ED0C8-42E8-4658-9EB1-4D33B5BF64E0}|BookingService.Persistence\\BookingService.Persistence.csproj|d:\\programmproject\\kursach\\gamingpc\\booking-service\\bookingservice\\bookingservice.persistence\\configuration\\seatconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{299ED0C8-42E8-4658-9EB1-4D33B5BF64E0}|BookingService.Persistence\\BookingService.Persistence.csproj|solutionrelative:bookingservice.persistence\\configuration\\seatconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CDBB2E31-A70D-4F6C-A95F-7D5AB3ACD2D3}|BookingService.Domain\\BookingService.Domain.csproj|d:\\programmproject\\kursach\\booking-service\\bookingservice\\bookingservice.domain\\interfaces\\repositories\\ibookingplacepolicy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CDBB2E31-A70D-4F6C-A95F-7D5AB3ACD2D3}|BookingService.Domain\\BookingService.Domain.csproj|solutionrelative:bookingservice.domain\\interfaces\\repositories\\ibookingplacepolicy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{299ED0C8-42E8-4658-9EB1-4D33B5BF64E0}|BookingService.Persistence\\BookingService.Persistence.csproj|d:\\programmproject\\kursach\\gamingpc\\booking-service\\bookingservice\\bookingservice.persistence\\configuration\\bookingplaceconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{299ED0C8-42E8-4658-9EB1-4D33B5BF64E0}|BookingService.Persistence\\BookingService.Persistence.csproj|solutionrelative:bookingservice.persistence\\configuration\\bookingplaceconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CDBB2E31-A70D-4F6C-A95F-7D5AB3ACD2D3}|BookingService.Domain\\BookingService.Domain.csproj|d:\\programmproject\\kursach\\booking-service\\bookingservice\\bookingservice.domain\\interfaces\\repositories\\ibookingplacerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CDBB2E31-A70D-4F6C-A95F-7D5AB3ACD2D3}|BookingService.Domain\\BookingService.Domain.csproj|solutionrelative:bookingservice.domain\\interfaces\\repositories\\ibookingplacerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CDBB2E31-A70D-4F6C-A95F-7D5AB3ACD2D3}|BookingService.Domain\\BookingService.Domain.csproj|d:\\programmproject\\kursach\\booking-service\\bookingservice\\bookingservice.domain\\events\\halladdeedevent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CDBB2E31-A70D-4F6C-A95F-7D5AB3ACD2D3}|BookingService.Domain\\BookingService.Domain.csproj|solutionrelative:bookingservice.domain\\events\\halladdeedevent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CDBB2E31-A70D-4F6C-A95F-7D5AB3ACD2D3}|BookingService.Domain\\BookingService.Domain.csproj|d:\\programmproject\\kursach\\booking-service\\bookingservice\\bookingservice.domain\\events\\seatfreedevent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CDBB2E31-A70D-4F6C-A95F-7D5AB3ACD2D3}|BookingService.Domain\\BookingService.Domain.csproj|solutionrelative:bookingservice.domain\\events\\seatfreedevent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CDBB2E31-A70D-4F6C-A95F-7D5AB3ACD2D3}|BookingService.Domain\\BookingService.Domain.csproj|d:\\programmproject\\kursach\\booking-service\\bookingservice\\bookingservice.domain\\events\\seatoccupiedevent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CDBB2E31-A70D-4F6C-A95F-7D5AB3ACD2D3}|BookingService.Domain\\BookingService.Domain.csproj|solutionrelative:bookingservice.domain\\events\\seatoccupiedevent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CDBB2E31-A70D-4F6C-A95F-7D5AB3ACD2D3}|BookingService.Domain\\BookingService.Domain.csproj|d:\\programmproject\\kursach\\booking-service\\bookingservice\\bookingservice.domain\\entities\\seat.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CDBB2E31-A70D-4F6C-A95F-7D5AB3ACD2D3}|BookingService.Domain\\BookingService.Domain.csproj|solutionrelative:bookingservice.domain\\entities\\seat.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CDBB2E31-A70D-4F6C-A95F-7D5AB3ACD2D3}|BookingService.Domain\\BookingService.Domain.csproj|d:\\programmproject\\kursach\\booking-service\\bookingservice\\bookingservice.domain\\aggregates\\hall.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{CDBB2E31-A70D-4F6C-A95F-7D5AB3ACD2D3}|BookingService.Domain\\BookingService.Domain.csproj|d:\\programmproject\\kursach\\gamingpc\\booking-service\\bookingservice\\bookingservice.domain\\aggregates\\hall.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{CDBB2E31-A70D-4F6C-A95F-7D5AB3ACD2D3}|BookingService.Domain\\BookingService.Domain.csproj|solutionrelative:bookingservice.domain\\aggregates\\hall.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CDBB2E31-A70D-4F6C-A95F-7D5AB3ACD2D3}|BookingService.Domain\\BookingService.Domain.csproj|d:\\programmproject\\kursach\\booking-service\\bookingservice\\bookingservice.domain\\aggregates\\bookingplace.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CDBB2E31-A70D-4F6C-A95F-7D5AB3ACD2D3}|BookingService.Domain\\BookingService.Domain.csproj|solutionrelative:bookingservice.domain\\aggregates\\bookingplace.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{CDBB2E31-A70D-4F6C-A95F-7D5AB3ACD2D3}|BookingService.Domain\\BookingService.Domain.csproj|d:\\programmproject\\kursach\\gamingpc\\booking-service\\bookingservice\\bookingservice.domain\\entities\\seat.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CDBB2E31-A70D-4F6C-A95F-7D5AB3ACD2D3}|BookingService.Domain\\BookingService.Domain.csproj|solutionrelative:bookingservice.domain\\entities\\seat.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CDBB2E31-A70D-4F6C-A95F-7D5AB3ACD2D3}|BookingService.Domain\\BookingService.Domain.csproj|d:\\programmproject\\kursach\\gamingpc\\booking-service\\bookingservice\\bookingservice.domain\\valueobjects\\computerspec.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CDBB2E31-A70D-4F6C-A95F-7D5AB3ACD2D3}|BookingService.Domain\\BookingService.Domain.csproj|solutionrelative:bookingservice.domain\\valueobjects\\computerspec.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CDBB2E31-A70D-4F6C-A95F-7D5AB3ACD2D3}|BookingService.Domain\\BookingService.Domain.csproj|d:\\programmproject\\kursach\\gamingpc\\booking-service\\bookingservice\\bookingservice.domain\\valueobjects\\address.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CDBB2E31-A70D-4F6C-A95F-7D5AB3ACD2D3}|BookingService.Domain\\BookingService.Domain.csproj|solutionrelative:bookingservice.domain\\valueobjects\\address.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{299ED0C8-42E8-4658-9EB1-4D33B5BF64E0}|BookingService.Persistence\\BookingService.Persistence.csproj|d:\\programmproject\\kursach\\gamingpc\\booking-service\\bookingservice\\bookingservice.persistence\\context\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{299ED0C8-42E8-4658-9EB1-4D33B5BF64E0}|BookingService.Persistence\\BookingService.Persistence.csproj|solutionrelative:bookingservice.persistence\\context\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -50,137 +42,107 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "IBookingPolicyService.cs",
-              "DocumentMoniker": "D:\\ProgrammProject\\Kursach\\booking-service\\BookingService\\BookingService.Domain\\Interfaces\\Services\\IBookingPolicyService.cs",
-              "RelativeDocumentMoniker": "BookingService.Domain\\Interfaces\\Services\\IBookingPolicyService.cs",
-              "ToolTip": "D:\\ProgrammProject\\Kursach\\booking-service\\BookingService\\BookingService.Domain\\Interfaces\\Services\\IBookingPolicyService.cs",
-              "RelativeToolTip": "BookingService.Domain\\Interfaces\\Services\\IBookingPolicyService.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-03T04:33:36.271Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "ISeatOccupiedService.cs",
-              "DocumentMoniker": "D:\\ProgrammProject\\Kursach\\booking-service\\BookingService\\BookingService.Domain\\Interfaces\\Services\\ISeatOccupiedService.cs",
-              "RelativeDocumentMoniker": "BookingService.Domain\\Interfaces\\Services\\ISeatOccupiedService.cs",
-              "ToolTip": "D:\\ProgrammProject\\Kursach\\booking-service\\BookingService\\BookingService.Domain\\Interfaces\\Services\\ISeatOccupiedService.cs",
-              "RelativeToolTip": "BookingService.Domain\\Interfaces\\Services\\ISeatOccupiedService.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Title": "SeatConfiguration.cs",
+              "DocumentMoniker": "D:\\ProgrammProject\\Kursach\\GamingPC\\booking-service\\BookingService\\BookingService.Persistence\\Configuration\\SeatConfiguration.cs",
+              "RelativeDocumentMoniker": "BookingService.Persistence\\Configuration\\SeatConfiguration.cs",
+              "ToolTip": "D:\\ProgrammProject\\Kursach\\GamingPC\\booking-service\\BookingService\\BookingService.Persistence\\Configuration\\SeatConfiguration.cs",
+              "RelativeToolTip": "BookingService.Persistence\\Configuration\\SeatConfiguration.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-03T04:33:19.546Z",
+              "WhenOpened": "2025-06-04T16:57:10.265Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "IBookingPlacePolicy.cs",
-              "DocumentMoniker": "D:\\ProgrammProject\\Kursach\\booking-service\\BookingService\\BookingService.Domain\\Interfaces\\Repositories\\IBookingPlacePolicy.cs",
-              "RelativeDocumentMoniker": "BookingService.Domain\\Interfaces\\Repositories\\IBookingPlacePolicy.cs",
-              "ToolTip": "D:\\ProgrammProject\\Kursach\\booking-service\\BookingService\\BookingService.Domain\\Interfaces\\Repositories\\IBookingPlacePolicy.cs",
-              "RelativeToolTip": "BookingService.Domain\\Interfaces\\Repositories\\IBookingPlacePolicy.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Title": "BookingPlaceConfiguration.cs",
+              "DocumentMoniker": "D:\\ProgrammProject\\Kursach\\GamingPC\\booking-service\\BookingService\\BookingService.Persistence\\Configuration\\BookingPlaceConfiguration.cs",
+              "RelativeDocumentMoniker": "BookingService.Persistence\\Configuration\\BookingPlaceConfiguration.cs",
+              "ToolTip": "D:\\ProgrammProject\\Kursach\\GamingPC\\booking-service\\BookingService\\BookingService.Persistence\\Configuration\\BookingPlaceConfiguration.cs",
+              "RelativeToolTip": "BookingService.Persistence\\Configuration\\BookingPlaceConfiguration.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-03T04:32:49.72Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "IBookingPlaceRepository.cs",
-              "DocumentMoniker": "D:\\ProgrammProject\\Kursach\\booking-service\\BookingService\\BookingService.Domain\\Interfaces\\Repositories\\IBookingPlaceRepository.cs",
-              "RelativeDocumentMoniker": "BookingService.Domain\\Interfaces\\Repositories\\IBookingPlaceRepository.cs",
-              "ToolTip": "D:\\ProgrammProject\\Kursach\\booking-service\\BookingService\\BookingService.Domain\\Interfaces\\Repositories\\IBookingPlaceRepository.cs",
-              "RelativeToolTip": "BookingService.Domain\\Interfaces\\Repositories\\IBookingPlaceRepository.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAsAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-03T04:21:20.264Z",
+              "WhenOpened": "2025-06-04T16:57:08.97Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "HallAddeedevent.cs",
-              "DocumentMoniker": "D:\\ProgrammProject\\Kursach\\booking-service\\BookingService\\BookingService.Domain\\Events\\HallAddeedevent.cs",
-              "RelativeDocumentMoniker": "BookingService.Domain\\Events\\HallAddeedevent.cs",
-              "ToolTip": "D:\\ProgrammProject\\Kursach\\booking-service\\BookingService\\BookingService.Domain\\Events\\HallAddeedevent.cs",
-              "RelativeToolTip": "BookingService.Domain\\Events\\HallAddeedevent.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAAhAAAA",
+              "Title": "Seat.cs",
+              "DocumentMoniker": "D:\\ProgrammProject\\Kursach\\GamingPC\\booking-service\\BookingService\\BookingService.Domain\\Entities\\Seat.cs",
+              "RelativeDocumentMoniker": "BookingService.Domain\\Entities\\Seat.cs",
+              "ToolTip": "D:\\ProgrammProject\\Kursach\\GamingPC\\booking-service\\BookingService\\BookingService.Domain\\Entities\\Seat.cs",
+              "RelativeToolTip": "BookingService.Domain\\Entities\\Seat.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-03T04:20:50.89Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-03T16:18:43.062Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 5,
-              "Title": "SeatFreedEvent.cs",
-              "DocumentMoniker": "D:\\ProgrammProject\\Kursach\\booking-service\\BookingService\\BookingService.Domain\\Events\\SeatFreedEvent.cs",
-              "RelativeDocumentMoniker": "BookingService.Domain\\Events\\SeatFreedEvent.cs",
-              "ToolTip": "D:\\ProgrammProject\\Kursach\\booking-service\\BookingService\\BookingService.Domain\\Events\\SeatFreedEvent.cs",
-              "RelativeToolTip": "BookingService.Domain\\Events\\SeatFreedEvent.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAAkAAAA",
+              "Title": "ComputerSpec.cs",
+              "DocumentMoniker": "D:\\ProgrammProject\\Kursach\\GamingPC\\booking-service\\BookingService\\BookingService.Domain\\ValueObjects\\ComputerSpec.cs",
+              "RelativeDocumentMoniker": "BookingService.Domain\\ValueObjects\\ComputerSpec.cs",
+              "ToolTip": "D:\\ProgrammProject\\Kursach\\GamingPC\\booking-service\\BookingService\\BookingService.Domain\\ValueObjects\\ComputerSpec.cs",
+              "RelativeToolTip": "BookingService.Domain\\ValueObjects\\ComputerSpec.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAIwA8AAAA7AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-03T04:20:29.442Z",
+              "WhenOpened": "2025-06-03T09:19:09.317Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Hall.cs",
+              "DocumentMoniker": "D:\\ProgrammProject\\Kursach\\GamingPC\\booking-service\\BookingService\\BookingService.Domain\\Aggregates\\Hall.cs",
+              "RelativeDocumentMoniker": "BookingService.Domain\\Aggregates\\Hall.cs",
+              "ToolTip": "D:\\ProgrammProject\\Kursach\\GamingPC\\booking-service\\BookingService\\BookingService.Domain\\Aggregates\\Hall.cs",
+              "RelativeToolTip": "BookingService.Domain\\Aggregates\\Hall.cs",
+              "ViewState": "AgIAABAAAAAAAAAAAAAgwBgAAAAzAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-03T09:00:13.147Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "HallConfiguration.cs",
+              "DocumentMoniker": "D:\\ProgrammProject\\Kursach\\GamingPC\\booking-service\\BookingService\\BookingService.Persistence\\Configuration\\HallConfiguration.cs",
+              "RelativeDocumentMoniker": "BookingService.Persistence\\Configuration\\HallConfiguration.cs",
+              "ToolTip": "D:\\ProgrammProject\\Kursach\\GamingPC\\booking-service\\BookingService\\BookingService.Persistence\\Configuration\\HallConfiguration.cs*",
+              "RelativeToolTip": "BookingService.Persistence\\Configuration\\HallConfiguration.cs*",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAACkAAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-03T08:44:02.584Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 6,
-              "Title": "SeatOccupiedEvent.cs",
-              "DocumentMoniker": "D:\\ProgrammProject\\Kursach\\booking-service\\BookingService\\BookingService.Domain\\Events\\SeatOccupiedEvent.cs",
-              "RelativeDocumentMoniker": "BookingService.Domain\\Events\\SeatOccupiedEvent.cs",
-              "ToolTip": "D:\\ProgrammProject\\Kursach\\booking-service\\BookingService\\BookingService.Domain\\Events\\SeatOccupiedEvent.cs",
-              "RelativeToolTip": "BookingService.Domain\\Events\\SeatOccupiedEvent.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAAFAAAA",
+              "Title": "Address.cs",
+              "DocumentMoniker": "D:\\ProgrammProject\\Kursach\\GamingPC\\booking-service\\BookingService\\BookingService.Domain\\ValueObjects\\Address.cs",
+              "RelativeDocumentMoniker": "BookingService.Domain\\ValueObjects\\Address.cs",
+              "ToolTip": "D:\\ProgrammProject\\Kursach\\GamingPC\\booking-service\\BookingService\\BookingService.Domain\\ValueObjects\\Address.cs",
+              "RelativeToolTip": "BookingService.Domain\\ValueObjects\\Address.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAzAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-03T04:19:05.996Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "Hall.cs",
-              "DocumentMoniker": "D:\\ProgrammProject\\Kursach\\booking-service\\BookingService\\BookingService.Domain\\Aggregates\\Hall.cs",
-              "RelativeDocumentMoniker": "BookingService.Domain\\Aggregates\\Hall.cs",
-              "ToolTip": "D:\\ProgrammProject\\Kursach\\booking-service\\BookingService\\BookingService.Domain\\Aggregates\\Hall.cs",
-              "RelativeToolTip": "BookingService.Domain\\Aggregates\\Hall.cs",
-              "ViewState": "AQIAABEAAAAAAAAAAAAgwCMAAAAJAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-03T04:05:33.377Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "BookingPlace.cs",
-              "DocumentMoniker": "D:\\ProgrammProject\\Kursach\\booking-service\\BookingService\\BookingService.Domain\\Aggregates\\BookingPlace.cs",
-              "RelativeDocumentMoniker": "BookingService.Domain\\Aggregates\\BookingPlace.cs",
-              "ToolTip": "D:\\ProgrammProject\\Kursach\\booking-service\\BookingService\\BookingService.Domain\\Aggregates\\BookingPlace.cs",
-              "RelativeToolTip": "BookingService.Domain\\Aggregates\\BookingPlace.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAdAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-02T16:45:23.186Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-03T08:27:06.311Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 7,
-              "Title": "Seat.cs",
-              "DocumentMoniker": "D:\\ProgrammProject\\Kursach\\booking-service\\BookingService\\BookingService.Domain\\Entities\\Seat.cs",
-              "RelativeDocumentMoniker": "BookingService.Domain\\Entities\\Seat.cs",
-              "ToolTip": "D:\\ProgrammProject\\Kursach\\booking-service\\BookingService\\BookingService.Domain\\Entities\\Seat.cs",
-              "RelativeToolTip": "BookingService.Domain\\Entities\\Seat.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAUAAAA",
+              "Title": "AppDbContext.cs",
+              "DocumentMoniker": "D:\\ProgrammProject\\Kursach\\GamingPC\\booking-service\\BookingService\\BookingService.Persistence\\Context\\AppDbContext.cs",
+              "RelativeDocumentMoniker": "BookingService.Persistence\\Context\\AppDbContext.cs",
+              "ToolTip": "D:\\ProgrammProject\\Kursach\\GamingPC\\booking-service\\BookingService\\BookingService.Persistence\\Context\\AppDbContext.cs",
+              "RelativeToolTip": "BookingService.Persistence\\Context\\AppDbContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAABYAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-02T16:44:39.213Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-03T08:17:00.9Z"
             }
           ]
         }

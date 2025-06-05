@@ -1,9 +1,10 @@
 export interface User {
   id: string;
   email: string;
-  name?: string;
-  points: number;
-  avatarUrl?: string;
+  login: string;
+  password: string;
+  username?: string;
+  avatar?: string;
 }
 
 export interface LoginFormData {
