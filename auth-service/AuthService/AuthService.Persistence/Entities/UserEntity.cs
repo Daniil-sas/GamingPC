@@ -11,7 +11,5 @@
         public string PasswordHash { get; set; } = string.Empty;
 
         public string Login { get; set; } = string.Empty;
-
-        public int Points { get; set; }
     }
 }

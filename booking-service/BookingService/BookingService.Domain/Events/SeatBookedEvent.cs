@@ -1,6 +1,6 @@
 ﻿namespace BookingService.Domain.Events
 {
-    public interface IDomainEvent
+    public class SeatBookedEvent
     {
     }
 }

@@ -18,6 +18,9 @@ const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose, onLogin }) => {
     confirmPassword: "",
   });
 
+  const [isErrorVisible, setErrorVisible] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
+
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({
       ...formData,
@@ -36,12 +39,23 @@ const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose, onLogin }) => {
         username: formData.username || "user123",
         email: formData.email || "user@example.com",
       };
+
+      if (formData.password !== "ddd") {
+        setErrorVisible(true);
+        setErrorMessage("Неверный логин или пароль")
+        return;
+      }
+
+      setErrorVisible(false);
+
       onLogin(user);
     } else {
       if (formData.password !== formData.confirmPassword) {
-        alert("Passwords do not match!");
+        setErrorVisible(true);
+        setErrorMessage("Введёные пароли не совподают")
         return;
       }
+
       const user: User = {
         id: "1",
         login: formData.login,
@@ -49,6 +63,13 @@ const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose, onLogin }) => {
         username: formData.username,
         email: formData.email,
       };
+
+      if (user.email === "ddd@mail.ru") {
+        setErrorVisible(true);
+        setErrorMessage("Пользователь с такой почтой уже существует");
+        return;
+      }
+
       onLogin(user);
     }
 
@@ -79,6 +100,12 @@ const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose, onLogin }) => {
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-4">
+          {isErrorVisible && (
+            <div>
+              <p className="text-red-500">{errorMessage}</p>
+            </div>
+          )}
+
           {!isLoginMode && (
             <div>
               <label
@@ -169,7 +196,7 @@ const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose, onLogin }) => {
               ? "Нет аккаунта? "
               : "Уже есть аккаунт? "}
             <button
-              onClick={() => setIsLoginMode(!isLoginMode)}
+              onClick={() => {setIsLoginMode(!isLoginMode); setErrorVisible(false);}}
               className="text-amber-600 hover:text-amber-700 font-semibold"
             >
               {isLoginMode ? "Зарегистрироваться" : "Войти"}

@@ -2,21 +2,34 @@
 
 namespace BookingService.Domain.ValueObjects
 {
-    public class ComputerSpec(string[] monitors, string processor, string chair,
-        string ram, string keyboard, string internet, string mouse, string disk, string graphicsCard) : ValueObject
+    public class ComputerSpec : ValueObject
     {
-        public string[] Monitors { get; } = monitors;
-        public string Processor { get; } = processor;
-        public string Chair { get; } = chair;
-        public string RAM { get; } = ram;
-        public string Keyboard { get; } = keyboard;
-        public string Internet { get; } = internet;
-        public string Mouse { get; } = mouse;
-        public string Disk { get; } = disk;
-        public string GraphicsCard { get; } = graphicsCard;
+        public ComputerSpec(IReadOnlyList<string> monitors, string processor, string chair, string rAM, string keyboard, string internet, string mouse, string disk, string graphicsCard)
+        {
+            Monitors = monitors;
+            Processor = processor;
+            Chair = chair;
+            RAM = rAM;
+            Keyboard = keyboard;
+            Internet = internet;
+            Mouse = mouse;
+            Disk = disk;
+            GraphicsCard = graphicsCard;
+        }
+
+        public IReadOnlyList<string> Monitors { get; set; }
+        public string Processor { get; set; }
+        public string Chair { get; set; }
+        public string RAM { get; set; }
+        public string Keyboard { get; set; }
+        public string Internet { get; set; }
+        public string Mouse { get; set; }
+        public string Disk { get; set; }
+        public string GraphicsCard { get; set; }
+
         protected override IEnumerable<object> GetEqualityComponents()
         {
-            yield return string.Join(",", Monitors.OrderBy(m => m));
+            foreach (var monitor in Monitors) yield return monitor;
             yield return Processor;
             yield return Chair;
             yield return RAM;

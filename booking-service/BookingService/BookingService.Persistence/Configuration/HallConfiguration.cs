@@ -1,58 +1,57 @@
-﻿using BookingService.Domain.Aggregates;
-using BookingService.Domain.ValueObjects;
+﻿using BookingService.Domain.ValueObjects;
+using BookingService.Persistence.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using Newtonsoft.Json;
 
 namespace BookingService.Persistence.Configuration
 {
-    public class HallConfiguration : IEntityTypeConfiguration<Hall>
+    internal class HallConfiguration : IEntityTypeConfiguration<HallEntity>
     {
-        public void Configure(EntityTypeBuilder<Hall> builder)
+        public void Configure(EntityTypeBuilder<HallEntity> builder)
         {
-            builder.HasKey(x => x.Id);
+            var jOption = new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore };
 
-            builder
-                .HasOne<BookingPlace>()
-                .WithMany(p => p.Halls)
-                .HasForeignKey(f => f.BookingPlaceId)
-                .OnDelete(DeleteBehavior.Cascade);
+            builder.ToTable("halls");
+            builder.HasKey(h => h.Id);
 
-            builder.Property(x => x.Name)
-                .IsRequired()
-                .HasMaxLength(100);
+            builder.Property(h => h.Id)
+                .HasColumnName("id")
+                .HasColumnType("uuid")
+                .IsRequired();
 
-            builder.Property(h => h.FloorPlanUrl)
-               .IsRequired(false)
-               .HasMaxLength(512);
+            builder.Property(h => h.BookingPlaceId)
+                .HasColumnName("booking_place_id")
+                .HasColumnType("uuid")
+                .IsRequired();
+
+            builder.Property(h => h.Name)
+                .HasColumnName("name")
+                .HasColumnType("varchar(100)")
+                .IsRequired();
 
             builder.Property(h => h.PricePerHour)
-                .HasColumnType("decimal(18,2)");
+                .HasColumnName("price_per_hour")
+                .HasColumnType("decimal(18,2)")
+                .IsRequired();
 
-            builder.OwnsMany(h => h.Seats, seat =>
-            {
-                seat.WithOwner().HasForeignKey("HallId");
-                seat.Property<Guid>("Id").ValueGeneratedNever();
-                seat.HasKey("Id");
-            });
-
-            builder.Property(p => p.Computer)
+            builder.Property(h => h.ComputerSpec)
+                .HasColumnName("computer_spec")
+                .HasColumnType("json")
+                .IsRequired()
                 .HasConversion(
-                    v => $"{ParseMonitors(v.Monitors)},{v.Internet},{v.Chair},{v.GraphicsCard},{v.Disk}," +
-                    $"{v.Keyboard},{v.RAM}",
+                    v => JsonConvert.SerializeObject(v, jOption),
+                    v => JsonConvert.DeserializeObject<ComputerSpec>(v, jOption)!
                 );
-        }
 
-        private static string ParseMonitors(string[] monitors)
-        {
-            string retMon = monitors[0];
-            for (int i = 1; i < monitors.Length; retMon += " " + monitors[i++]) ;
-            return retMon;
-        }
+            builder.HasOne<BookingPlaceEntity>(h => h.BookingPlace)
+                .WithMany(bp => bp.Halls)
+                .HasForeignKey(h => h.BookingPlaceId);
 
-        private static ComputerSpec ParseComputer(string value)
-        {
-            var parts = value.Split(',');
-            return new ComputerSpec(parts[0], parts[1], parts[2], parts[3]);
+            builder.HasMany<SeatEntity>(h => h.Seats)
+                .WithOne(s => s.Hall)
+                .HasForeignKey(s => s.HallId)
+                .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }

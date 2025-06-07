@@ -1,35 +1,31 @@
 ﻿using BookingService.Domain.Common;
+using BookingService.Domain.Exceptions;
 
 namespace BookingService.Domain.ValueObjects
 {
     public class TimeSlot : ValueObject
     {
-        public TimeSlot(DateTime start, TimeSpan duration)
+        public DateTime Start { get; }
+        public DateTime End { get; }
+
+        public TimeSpan Duration => End - Start;
+
+        public TimeSlot(DateTime start, DateTime end)
         {
-            if (duration <= TimeSpan.FromHours(2) || duration > TimeSpan.FromHours(10))
-            {
-                throw new ArgumentException("Продолжительность броинрования от 2 до 10 часов");
-            }
+            if (start >= end) throw new InvalidTimeSlotException("Не корректная дата начала и конца броинрования");
+            if (Duration <= TimeSpan.FromHours(2) || Duration > TimeSpan.FromHours(10)) throw new InvalidTimeSlotException("Бронирование от 2 до 10 часов");
 
             Start = start;
-            Duration = duration;
+            End = end;
         }
 
-        public DateTime Start { get; }
-        public TimeSpan Duration { get; }
-
-        public bool OverlapsWith(TimeSlot otherSlot)
-        {
-            var thisEnd = Start + Duration;
-            var otherEnd = otherSlot.Start + otherSlot.Duration;
-
-            return Start < otherEnd && otherSlot.Start < thisEnd;
-        }
+        public bool OverlapsWith(TimeSlot other)
+            => Start < other.End && End > other.Start;
 
         protected override IEnumerable<object> GetEqualityComponents()
         {
             yield return Start;
-            yield return Duration;
+            yield return End;
         }
     }
 }

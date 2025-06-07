@@ -1,33 +1,31 @@
-﻿using BookingService.Domain.Aggregates;
-using BookingService.Domain.ValueObjects;
+﻿using BookingService.Persistence.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace BookingService.Persistence.Configuration
 {
-    public class BookingPlaceConfiguration : IEntityTypeConfiguration<BookingPlace>
+    internal class BookingPlaceConfiguration : IEntityTypeConfiguration<BookingPlaceEntity>
     {
-        public void Configure(EntityTypeBuilder<BookingPlace> builder)
+        public void Configure(EntityTypeBuilder<BookingPlaceEntity> builder)
         {
+            builder.ToTable("booking_places");
             builder.HasKey(x => x.Id);
-            builder.Property(x => x.Address)
-                .HasConversion(
-                    v => $"{v.City},{v.Street},{v.House},{v.PostCode}",
-                    v => ParseAddress(v))
-                .HasMaxLength(512);
 
-            builder.OwnsMany(x => x.Halls, h =>
-            {
-                h.WithOwner().HasForeignKey("BookingPlaceId");
-                h.Property<Guid>("Id").ValueGeneratedNever();
-                h.HasKey("Id");
-            });
-        }
+            builder.Property(bp => bp.Id)
+                .HasColumnName("id")
+                .HasColumnType("uuid")
+                .IsRequired();
 
-        private static Address ParseAddress(string value)
-        {
-            var parts = value.Split(',');
-            return new Address(parts[0], parts[1], parts[2], parts[3]);
+            builder.Property(bp => bp.Address)
+                .HasColumnName("address")
+                .HasColumnType("varchar(512)")
+                .HasMaxLength(512)
+                .IsRequired();
+
+            builder.HasMany<HallEntity>(bp => bp.Halls)
+                .WithOne(h => h.BookingPlace)
+                .HasForeignKey(h => h.BookingPlaceId)
+                .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }

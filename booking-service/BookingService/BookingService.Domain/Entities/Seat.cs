@@ -1,25 +1,23 @@
 ﻿using BookingService.Domain.Common;
+using BookingService.Domain.Exception;
 using BookingService.Domain.ValueObjects;
 
-namespace BookingService.Domain.Models
+namespace BookingService.Domain.Entities
 {
     public class Seat : Entity
     {
-        private Seat(SeatPosition seatPosition, int numSeatInHall)
-        {
-            SeatPosition = seatPosition;
-            NumSeatInHall = numSeatInHall;
-        }
-        public Seat()
-        {
+        public Guid HallId { get; }
+        public int NumberInHall { get; }
+        public SeatPosition Position { get; }
 
-        }
-        public SeatPosition SeatPosition { get; }
-        public int NumSeatInHall { get; }
+        private Seat() { }
 
-        public static Seat Create(SeatPosition seatPosition, int numSeatInHall)
+        public Seat(Guid hallId, int numberInHall, SeatPosition position)
         {
-            return new Seat(seatPosition, numSeatInHall);
+            Id = Guid.NewGuid();
+            HallId = hallId;
+            NumberInHall = numberInHall > 0 ? numberInHall : throw new InvalidSeatException("Неверное номер места в зале");
+            Position = position;
         }
     }
 }

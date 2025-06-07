@@ -1,10 +1,10 @@
-﻿using BookingService.Domain.Aggregates;
+﻿using BookingService.Domain.Entities;
 
 namespace BookingService.Domain.Interfaces.Repositories
 {
     public interface IBookingPlaceRepository
     {
-        Task<BookingPlace?> GetByIdAsync(Guid id);
-        Task SaveChanges(BookingPlace place);
+        Task AddAsync(BookingPlace bookingPlace);
+        Task<BookingPlace> GetByIdAsync(Guid placeId);
     }
 }
