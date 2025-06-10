@@ -1,5 +1,4 @@
-﻿using BookingService.Domain.ValueObjects;
-using BookingService.Persistence.Entities;
+﻿using BookingService.Persistence.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Newtonsoft.Json;
@@ -41,7 +40,7 @@ namespace BookingService.Persistence.Configuration
                 .IsRequired()
                 .HasConversion(
                     v => JsonConvert.SerializeObject(v, jOption),
-                    v => JsonConvert.DeserializeObject<ComputerSpec>(v, jOption)!
+                    v => v
                 );
 
             builder.HasOne<BookingPlaceEntity>(h => h.BookingPlace)

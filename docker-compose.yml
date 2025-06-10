@@ -3,12 +3,14 @@ services:
     build:
       context: auth-service/AuthService/
       dockerfile: AuthService/Dockerfile
-    ports:
-      - "8080:8080"
+    ports: []
     container_name: auth_service_api
     environment:
-      - JwtSetting__Secret=3dasdas1e4212gewgaegdsaad21e12t23y3ty32hebedau39898323132444444
+      - JwtSetting__Secret= ${JWT_SECRET}
+      - JwtSetting__ExpiryMinutes = 15
       - JwtSetting__RefreshTokenExpiryDays=7
+      - JwtSetting__Issuer= ${JWT_ISSUER}
+      - JwtSetting__Audience= ${JWT_AUDIENCE}
       - Database__HOST=${DB_HOST_AUTHDB}
       - Database__PORT=${DB_PORT}
       - Database__NAME=${DB_NAME_AUTH_DB}
@@ -20,6 +22,8 @@ services:
     depends_on:
       - auth_db
       - redis_db
+    networks:
+      - backend
   auth_db:
     image: postgres
     ports:
@@ -30,8 +34,67 @@ services:
       POSTGRES_PASSWORD: ${DB_PASSWORD}
       POSTGRES_DB: ${DB_NAME_AUTH_DB}
     volumes:
-      - db_data:/var/lib/postgresql/data
+      - db_auth_data:/var/lib/postgresql/data
     container_name: auth_db_container
+
+  booking_service:
+    build:
+      context: booking-service/BookingService/
+      dockerfile: BookingService/Dockerfile
+    ports: []
+    container_name: booking_service_api
+    environment:
+      - Database__HOST=${DB_HOST_BOOKINGDB}
+      - Database__PORT=${DB_PORT}
+      - Database__NAME=${DB_NAME_BOOKING_DB}
+      - Database__USER=${DB_USER}
+      - Database__PASSWORD=${DB_PASSWORD}
+    depends_on:
+      - booking_db
+    networks:
+      - backend
+  booking_db:
+    image: postgres
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_HOST_AUTH_METHOD: trust
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_NAME_BOOKING_DB}
+    volumes:
+      - db_booking_data:/var/lib/postgresql/data
+    container_name: booking_db_container
+    
+  payment_service:
+    build:
+      context: payment-service/PaymentService/
+      dockerfile: PaymentService/Dockerfile
+    ports: []
+    container_name: payment_service_api
+    environment:
+      - Database__HOST=${DB_HOST_PAYMENTDB}
+      - Database__PORT=${DB_PORT}
+      - Database__NAME=${DB_NAME_PAYMENT_DB}
+      - Database__USER=${DB_USER}
+      - Database__PASSWORD=${DB_PASSWORD}
+    depends_on:
+      - payment_db
+    networks:
+      - backend
+  payment_db:
+    image: postgres
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_HOST_AUTH_METHOD: trust
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_NAME_PAYMENT_DB}
+    volumes:
+      - db_payment_data:/var/lib/postgresql/data
+    container_name: payment_db_container
+    
   redis_db:
     image: redis:8.0-alpine
     ports:
@@ -40,7 +103,50 @@ services:
       - REDIS_PASSWORD=${REDIS_PASSWORD}
     volumes:
       - redis_data:/data
-    container_name: redis_db_container 
+    container_name: redis_db_container
+  
+  api_gateway:
+    build:
+      context: api-gateway-service
+      dockerfile: Dockerfile
+    container_name: api_gateway
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - JwtSetting__Secret= ${JWT_SECRET}
+      - JwtSetting__ExpiryMinutes = 15
+      - JwtSetting__RefreshTokenExpiryDays=7
+      - JwtSetting__Issuer= ${JWT_ISSUER}
+      - JwtSetting__Audience= ${JWT_Audience}
+    volumes:
+      - ./api-gateway-service/bin/Debug/net8.0:/app:ro
+    depends_on:
+      - auth_service
+      - booking_service
+      - payment_service
+    networks:
+      - backend
+  
+  nginx:
+    image: nginx:1.23-alpine
+    ports:
+      - "80:80"
+      - "443:443"
+    container_name: nginx_proxy
+    volumes:
+      - ./api-gateway-service/nginx/conf.d:/etc/nginx/conf.d
+      - ./api-gateway-service/nginx/ssl:/etc/nginx/ssl
+      - ./api-gateway-service/nginx/logs:/var/log/nginx
+    depends_on:
+      - api_gateway
+    networks:
+      - backend
+    
+networks:
+  backend:
+    driver: bridge
+    
 volumes:
-  db_data:
+  db_auth_data:
+  db_booking_data:
+  db_payment_data:
   redis_data:

@@ -4,6 +4,6 @@
     {
         public Guid Id { get; set; }
         public string Address { get; set; }
-        public ICollection<HallEntity> Halls { get; set; } = [];
+        public List<HallEntity> Halls { get; set; }
     }
 }

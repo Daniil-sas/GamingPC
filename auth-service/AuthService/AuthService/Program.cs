@@ -26,7 +26,8 @@ services.Configure<RedisSetting>(configuration.GetSection("Redis"));
 services.AddOptions<RedisSetting>()
     .Bind(configuration.GetSection("Redis"));
 
-services.AddApiAuthentication(configuration);
+builder.Services.AddHttpContextAccessor();
+
 services.AddEndpointsApiExplorer();
 services.AddSwaggerGen();
 

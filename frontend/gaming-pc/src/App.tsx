@@ -13,18 +13,15 @@ import { User } from "./types/auth";
 
 function App() {
   const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
-  const { login, logout } = useAuth();
-  const [user, setUser] = useState<User | null>(null);
+  const { user, login, logout } = useAuth();
 
   const handleLogin = (userData: User) => {
-    setUser(userData);
     login(userData);
     setIsAuthModalOpen(false);
   };
 
   const handleLogout = () => {
     logout();
-    setUser(null);
   };
 
   return (

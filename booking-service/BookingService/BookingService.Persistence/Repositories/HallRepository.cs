@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using BookingService.Domain.Entities;
 using BookingService.Domain.Interfaces.Repositories;
+using BookingService.Domain.ValueObjects;
 using BookingService.Persistence.Entities;
 using Microsoft.EntityFrameworkCore;
 
@@ -15,11 +16,13 @@ namespace BookingService.Persistence.Repositories
             _dbContext = context;
             _mapper = mapper;
         }
-        public async Task AddAsync(Hall hall)
+        public async Task<Guid> AddAsync(Hall hall)
         {
             var entity = _mapper.Map<HallEntity>(hall);
             await _dbContext.Halls.AddAsync(entity);
             await _dbContext.SaveChangesAsync();
+
+            return entity.Id;
         }
 
         public async Task<Hall> GetByIdAsync(Guid hallId)
@@ -31,13 +34,18 @@ namespace BookingService.Persistence.Repositories
             return entity != null ? _mapper.Map<Hall>(entity) : null;
         }
 
-        public async Task<IReadOnlyList<Hall>> GetHallsInBookingPlace(Guid bookingPlaceId)
+        public async Task<List<Hall>> GetHallsInBookingPlace(Guid bookingPlaceId)
         {
             var entities = await _dbContext.Halls
                 .Where(h => h.BookingPlaceId == bookingPlaceId)
                 .ToListAsync();
 
-            return _mapper.Map<List<Hall>>(entities).AsReadOnly();
+            return _mapper.Map<List<Hall>>(entities);
+        }
+
+        public Task<bool> IsSeatBooked(Guid seatId, TimeSlot timeSlot)
+        {
+            throw new NotImplementedException();
         }
     }
 }

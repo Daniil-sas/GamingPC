@@ -6,9 +6,7 @@ namespace BookingService.Domain.Entities
     public class BookingPlace : Entity
     {
         public Address Address { get; set; }
-        public IReadOnlyCollection<Guid> HallIds => _hallIds.AsReadOnly();
-
-        private readonly List<Guid> _hallIds = new();
+        public List<Hall> Halls { get; set; }
 
         public BookingPlace(Guid id, Address address)
         {
@@ -16,10 +14,10 @@ namespace BookingService.Domain.Entities
             Address = address;
         }
 
-        public void AddHall(Guid hallId)
+        public void AddHall(Hall hall)
         {
-            if (!_hallIds.Contains(hallId))
-                _hallIds.Add(hallId);
+            if (!Halls.Contains(hall))
+                Halls.Add(hall);
         }
     }
 }

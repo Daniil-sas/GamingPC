@@ -16,11 +16,21 @@ namespace BookingService.Persistence.Repositories
             _dbContext = context;
             _mapper = mapper;
         }
-        public async Task AddAsync(Booking booking)
+        public async Task<Guid> AddAsync(Guid userId, Guid bookingPlaceId, Guid hallId, Guid seatId, TimeSlot slot)
         {
+            var booking = new Booking(
+                Guid.NewGuid(),
+                userId,
+                seatId,
+                hallId,
+                bookingPlaceId,
+                slot);
+
             var entity = _mapper.Map<BookingEntity>(booking);
             await _dbContext.Bookings.AddAsync(entity);
             await _dbContext.SaveChangesAsync();
+
+            return booking.Id;
         }
 
         public async Task<Booking> GetBookingByIdAsync(Guid bookingId)

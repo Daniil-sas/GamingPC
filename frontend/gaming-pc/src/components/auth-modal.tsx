@@ -10,6 +10,7 @@ interface AuthModalProps {
 
 const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose, onLogin }) => {
   const [isLoginMode, setIsLoginMode] = useState(true);
+  const [bbb, setBbb] = useState(false);
   const [formData, setFormData] = useState({
     login: "",
     username: "",
@@ -42,7 +43,7 @@ const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose, onLogin }) => {
 
       if (formData.password !== "ddd") {
         setErrorVisible(true);
-        setErrorMessage("Неверный логин или пароль")
+        setErrorMessage("Неверный логин или пароль");
         return;
       }
 
@@ -52,7 +53,7 @@ const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose, onLogin }) => {
     } else {
       if (formData.password !== formData.confirmPassword) {
         setErrorVisible(true);
-        setErrorMessage("Введёные пароли не совподают")
+        setErrorMessage("Введёные пароли не совподают");
         return;
       }
 
@@ -64,12 +65,13 @@ const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose, onLogin }) => {
         email: formData.email,
       };
 
-      if (user.email === "ddd@mail.ru") {
+      if (user.email === "ddd@mail.ru" && bbb) {
         setErrorVisible(true);
         setErrorMessage("Пользователь с такой почтой уже существует");
         return;
       }
-
+      setBbb(true);
+      setErrorVisible(false);
       onLogin(user);
     }
 
@@ -192,11 +194,12 @@ const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose, onLogin }) => {
 
         <div className="mt-6 text-center">
           <p className="text-sm text-gray-600">
-            {isLoginMode
-              ? "Нет аккаунта? "
-              : "Уже есть аккаунт? "}
+            {isLoginMode ? "Нет аккаунта? " : "Уже есть аккаунт? "}
             <button
-              onClick={() => {setIsLoginMode(!isLoginMode); setErrorVisible(false);}}
+              onClick={() => {
+                setIsLoginMode(!isLoginMode);
+                setErrorVisible(false);
+              }}
               className="text-amber-600 hover:text-amber-700 font-semibold"
             >
               {isLoginMode ? "Зарегистрироваться" : "Войти"}

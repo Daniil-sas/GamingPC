@@ -70,8 +70,7 @@ namespace BookingService.Persistence.Migrations
 
                     b.Property<string>("Address")
                         .IsRequired()
-                        .HasMaxLength(512)
-                        .HasColumnType("varchar(512)")
+                        .HasColumnType("json")
                         .HasColumnName("address");
 
                     b.HasKey("Id");
@@ -95,6 +94,10 @@ namespace BookingService.Persistence.Migrations
                         .HasColumnType("json")
                         .HasColumnName("computer_spec");
 
+                    b.Property<string>("FloorUrl")
+                        .IsRequired()
+                        .HasColumnType("text");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("varchar(100)")
@@ -103,10 +106,6 @@ namespace BookingService.Persistence.Migrations
                     b.Property<decimal>("PricePerHour")
                         .HasColumnType("decimal(18,2)")
                         .HasColumnName("price_per_hour");
-
-                    b.Property<string>("floorUrl")
-                        .IsRequired()
-                        .HasColumnType("text");
 
                     b.HasKey("Id");
 

@@ -1,6 +1,10 @@
+using BookingService.Application;
+using BookingService.Extensions;
+using BookingService.Infrastructure;
 using BookingService.Persistence;
 using BookingService.Persistence.Mappings;
 using BookingService.Persistence.Settings;
+using Microsoft.AspNetCore.CookiePolicy;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -13,13 +17,25 @@ builder.Services.AddSwaggerGen();
 var services = builder.Services;
 var configuration = builder.Configuration;
 
+services.AddScoped<GlobalExceptionHandler>();
+
 services.Configure<DatabaseSetting>(configuration.GetSection("Database"));
 services.AddAutoMapper(typeof(DatabaseMappings));
 
+services.AddHttpContextAccessor();
+
 services
+    .AddApplciation()
+    .AddInfrastructure()
     .AddPersistence();
 
+services.AddProblemDetails();
+services.AddExceptionHandler<GlobalExceptionHandler>();
+
+
 var app = builder.Build();
+
+app.UseExceptionHandler();
 
 if (app.Environment.IsDevelopment())
 {
@@ -40,9 +56,13 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-app.MapGet("get", () =>
+app.AddMappedEndpoints();
+
+app.UseCookiePolicy(new CookiePolicyOptions
 {
-    return Results.Ok("ok");
+    MinimumSameSitePolicy = SameSiteMode.Strict,
+    HttpOnly = HttpOnlyPolicy.Always,
+    Secure = CookieSecurePolicy.Always
 });
 
 app.Run();

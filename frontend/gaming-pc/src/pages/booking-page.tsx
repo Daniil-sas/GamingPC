@@ -1,9 +1,10 @@
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import BookingMap from "../components/booking";
 import type React from "react";
 import { BookingPlaceProps, Hall, Seat } from "../types/booking";
-import { QRCodeSVG } from 'qrcode.react';
+import { QRCodeSVG } from "qrcode.react";
 import { useAuth } from "../context/AuthContext";
+import DatePicker from "react-datepicker";
 
 interface BookingFormData {
   name: string;
@@ -23,42 +24,63 @@ const BookingPage: React.FC = () => {
 
   const date = new Date();
 
+  const [startDate, setStartDate] = useState<Date | null>(new Date());
   const [formData, setFormData] = useState<BookingFormData>({
-    name: user?.username ?? "",
-    email: user?.email ?? "",
+    name: "",
+    email: "",
     date: date.getDate().toString(),
     startTime: getTodayDate(),
     payment_method: "credit-card",
     countHour: 1,
   });
 
+  useEffect(() => {
+    if (user) {
+      setFormData((prev) => ({
+        ...prev,
+        name: user.username || "",
+        email: user.email || "",
+      }));
+    }
+  }, [user]);
+
   const [errorVisible, setErrorVisible] = useState(false);
 
-  const [bookingInfo, setBookingInfo] = useState({
+  interface BookingInfo {
+    selectedPlace: boolean;
+    priceInHall: number;
+    hallName: string;
+    numSeat: number;
+    seat: Seat | null; // или undefined, если место может быть не выбрано
+  }
+  const [bookingInfo, setBookingInfo] = useState<BookingInfo>({
     selectedPlace: false,
     priceInHall: 0,
     hallName: "",
     numSeat: 0,
+    seat: null,
   });
   const [isFormVisible, setIsFormVisible] = useState(false);
   const [paymentDetails, setPaymentDetails] = useState({
-    cardNumber: '',
-    expiryDate: '',
-    cvv: '',
+    cardNumber: "",
+    expiryDate: "",
+    cvv: "",
   });
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLSelectElement | HTMLInputElement>) => {
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLSelectElement | HTMLInputElement>
+  ) => {
     const { name, value } = e.target;
 
-    if (name === 'payment_method') {
-      setFormData(prev => ({
+    if (name === "payment_method") {
+      setFormData((prev) => ({
         ...prev,
-        payment_method: value as 'cash' | 'credit-card' | 'qr-code',
+        payment_method: value as "cash" | "credit-card" | "qr-code",
       }));
-    } else if (name.startsWith('card_')) {
-      setPaymentDetails(prev => ({
+    } else if (name.startsWith("card_")) {
+      setPaymentDetails((prev) => ({
         ...prev,
-        [name.replace('card_', '')]: value
+        [name.replace("card_", "")]: value,
       }));
     } else {
       setFormData((prev) => ({
@@ -72,7 +94,7 @@ const BookingPage: React.FC = () => {
     e.preventDefault();
 
     if (!formData.payment_method) {
-      alert('Выберите способ оплаты');
+      alert("Выберите способ оплаты");
       return;
     }
 
@@ -82,7 +104,9 @@ const BookingPage: React.FC = () => {
   // Генерация QR-кода (пример данных: сумма + уникальный ID транзакции)
   const generateQRCode = () => {
     const transactionId = `TRX-${Math.random().toString(36).substr(2, 9)}`;
-    return `PAY:${formData.countHour * bookingInfo.priceInHall}:${transactionId}`;
+    return `PAY:${
+      formData.countHour * bookingInfo.priceInHall
+    }:${transactionId}`;
   };
 
   const onChangeCoutHour = (e: ChangeEvent<HTMLInputElement>) => {
@@ -163,9 +187,19 @@ const BookingPage: React.FC = () => {
         hallName: hall.name,
         priceInHall: hall.price_per_hour,
         selectedPlace: true,
+        seat: seat,
       }));
     },
     street: "Main Street 123",
+  };
+
+  const handleSelectSeat = (seat: Seat) => {
+    seat.isOccupied = true;
+    setBookingInfo({
+      ...bookingInfo,
+      selectedPlace: true,
+      seat,
+    });
   };
 
   return (
@@ -273,14 +307,11 @@ const BookingPage: React.FC = () => {
                   >
                     Дата
                   </label>
-                  <input
-                    type="date"
-                    id="date"
-                    name="date"
-                    value={formData.date}
-                    onChange={handleInputChange}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent"
-                    required
+                  <DatePicker
+                    selected={startDate}
+                    onChange={(e) => setStartDate(e)}
+                    dateFormat={"dd-MM-yyyy"}
+                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-amber-500 focus:border-transparent"
                   />
                 </div>
 
@@ -375,12 +406,16 @@ const BookingPage: React.FC = () => {
             </div>
             {isFormVisible && (
               <div className="mt-6 p-4 bg-gray-50 rounded-lg animate-fade-in">
-                {formData.payment_method === 'credit-card' && (
+                {formData.payment_method === "credit-card" && (
                   <div className="space-y-4">
-                    <h3 className="text-lg font-semibold mb-2">Введите данные карты</h3>
+                    <h3 className="text-lg font-semibold mb-2">
+                      Введите данные карты
+                    </h3>
 
                     <div>
-                      <label className="block text-sm text-gray-600 mb-1">Номер карты</label>
+                      <label className="block text-sm text-gray-600 mb-1">
+                        Номер карты
+                      </label>
                       <input
                         type="text"
                         name="card_cardNumber"
@@ -395,7 +430,9 @@ const BookingPage: React.FC = () => {
 
                     <div className="flex space-x-4">
                       <div className="flex-1">
-                        <label className="block text-sm text-gray-600 mb-1">Срок действия</label>
+                        <label className="block text-sm text-gray-600 mb-1">
+                          Срок действия
+                        </label>
                         <input
                           type="text"
                           name="card_expiryDate"
@@ -409,7 +446,9 @@ const BookingPage: React.FC = () => {
                       </div>
 
                       <div className="flex-1">
-                        <label className="block text-sm text-gray-600 mb-1">CVV</label>
+                        <label className="block text-sm text-gray-600 mb-1">
+                          CVV
+                        </label>
                         <input
                           type="password"
                           name="card_cvv"
@@ -426,8 +465,9 @@ const BookingPage: React.FC = () => {
                     <button
                       type="button"
                       onClick={() => {
-                        console.log('Оплата картой:', paymentDetails);
-                        alert('Оплата картой прошла успешно!');
+                        console.log("Оплата картой:", paymentDetails);
+                        alert("Оплата картой прошла успешно!");
+                        handleSelectSeat(bookingInfo.seat!);
                         setIsFormVisible(false);
                       }}
                       className="w-full bg-amber-600 text-white py-2 px-4 rounded-lg hover:bg-green-600 transition"
@@ -437,9 +477,11 @@ const BookingPage: React.FC = () => {
                   </div>
                 )}
 
-                {formData.payment_method === 'qr-code' && (
+                {formData.payment_method === "qr-code" && (
                   <div className="space-y-4 text-center">
-                    <h3 className="text-lg font-semibold mb-2">Отсканируйте QR-код для оплаты</h3>
+                    <h3 className="text-lg font-semibold mb-2">
+                      Отсканируйте QR-код для оплаты
+                    </h3>
 
                     <div className="mx-auto w-48 h-48 bg-white border border-gray-300 rounded-lg">
                       <QRCodeSVG
@@ -457,7 +499,6 @@ const BookingPage: React.FC = () => {
                   </div>
                 )}
 
-                {/* Кнопка отмены */}
                 <button
                   type="button"
                   onClick={() => setIsFormVisible(false)}

@@ -7,8 +7,8 @@ namespace AuthService.Controllers
     {
         public static IEndpointRouteBuilder MapUsersEndpoints(this IEndpointRouteBuilder app)
         {
-            app.MapPost("register", Register);
-            app.MapPost("login", Login);
+            app.MapPost("api/auth/register", Register);
+            app.MapPost("api/auth/login", Login);
 
             return app;
         }

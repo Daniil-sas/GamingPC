@@ -6,11 +6,11 @@ namespace AuthService.Controllers
     {
         public static IEndpointRouteBuilder MapTokenUpdateEndpoints(this IEndpointRouteBuilder builder)
         {
-            builder.MapGet($"refresh-token", UpdateToken);
+            builder.MapGet($"api/auth/refresh-token", UpdateToken);
             return builder;
         }
 
-        private static async Task<IResult> UpdateToken(HttpContext context, UpdateTokenService updateTokenService)
+        private static async Task<IResult> UpdateToken(HttpContext context, UpdateTokenService updateTokenService, IHttpContextAccessor accessor)
         {
             if (!context.Request.Cookies.TryGetValue("refresh-token", out var refreshToken))
             {

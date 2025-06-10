@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import type React from "react";
 import { useAuth } from "../context/AuthContext";
 
@@ -12,12 +12,21 @@ interface ContactFormData {
 const ContactPage: React.FC = () => {
   const { user } = useAuth();
   const [formData, setFormData] = useState<ContactFormData>({
-    name: user?.username ?? "",
-    email: user?.email ?? "",
+    name: "",
+    email: "",
     subject: "",
     message: "",
   });
 
+  useEffect(() => {
+    if (user) {
+      setFormData((prev) => ({
+        ...prev,
+        name: user.username || "",
+        email: user.email || "",
+      }));
+    }
+  }, [user]);
 
   const [isSubmitted, setIsSubmitted] = useState(false);
 
@@ -33,7 +42,6 @@ const ContactPage: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    
     console.log("Contact form submitted:", formData);
     setIsSubmitted(true);
   };
@@ -51,7 +59,9 @@ const ContactPage: React.FC = () => {
   return (
     <main className="flex-1 container mx-auto px-4 py-12">
       <div className="max-w-5xl mx-auto">
-        <h1 className="text-4xl font-bold text-gray-900 mb-2">Свяжитесь с нами</h1>
+        <h1 className="text-4xl font-bold text-gray-900 mb-2">
+          Свяжитесь с нами
+        </h1>
         <p className="text-lg text-gray-600 mb-12">
           Есть вопросы? Не тяните, с радостью ответим на них.
         </p>
@@ -283,7 +293,9 @@ const ContactPage: React.FC = () => {
                   </div>
                   <div>
                     <h4 className="font-medium text-gray-900">Часы работы</h4>
-                    <p className="text-gray-600">Понедельник - Пятница: 8:00 - 20:00</p>
+                    <p className="text-gray-600">
+                      Понедельник - Пятница: 8:00 - 20:00
+                    </p>
                     <p className="text-gray-600">Суббота: 10:00 - 19:00</p>
                     <p className="text-gray-600">Воскресенье: Выходной</p>
                   </div>

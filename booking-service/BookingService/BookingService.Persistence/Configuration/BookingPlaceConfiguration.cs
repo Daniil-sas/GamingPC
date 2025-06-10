@@ -18,8 +18,7 @@ namespace BookingService.Persistence.Configuration
 
             builder.Property(bp => bp.Address)
                 .HasColumnName("address")
-                .HasColumnType("varchar(512)")
-                .HasMaxLength(512)
+                .HasColumnType("json")
                 .IsRequired();
 
             builder.HasMany<HallEntity>(bp => bp.Halls)

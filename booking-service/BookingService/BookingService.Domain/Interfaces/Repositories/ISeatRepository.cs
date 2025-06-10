@@ -4,8 +4,8 @@ namespace BookingService.Domain.Interfaces.Repositories
 {
     public interface ISeatRepository
     {
-        Task AddAsync(Seat seat);
+        Task<Guid> AddAsync(Seat seat);
         Task<Seat> GetByIdAsync(Guid seatId);
-        Task<IReadOnlyList<Seat>> GetSeatsInHall(Guid hallId);
+        Task<List<Seat>> GetSeatsInHall(Guid hallId);
     }
 }

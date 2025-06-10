@@ -3,6 +3,7 @@ using BookingService.Domain.Entities;
 using BookingService.Domain.Interfaces.Repositories;
 using BookingService.Persistence.Entities;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 
 namespace BookingService.Persistence.Repositories
 {
@@ -16,18 +17,20 @@ namespace BookingService.Persistence.Repositories
             _mapper = mapper;
         }
 
-        public async Task AddAsync(Seat seat)
+        public async Task<Guid> AddAsync(Seat seat)
         {
             var newSeat = new SeatEntity()
             {
                 Id = seat.Id,
                 HallId = seat.HallId,
                 NumberInHall = seat.NumberInHall,
-                PositionJson = seat.Position
+                PositionJson = JsonConvert.SerializeObject(seat.Position)
             };
 
             await _dbContext.Seats.AddAsync(newSeat);
             await _dbContext.SaveChangesAsync();
+
+            return newSeat.Id;
         }
 
         public async Task<Seat> GetByIdAsync(Guid seatId)
@@ -39,14 +42,14 @@ namespace BookingService.Persistence.Repositories
             return _mapper.Map<Seat>(seatEntity);
         }
 
-        public async Task<IReadOnlyList<Seat>> GetSeatsInHall(Guid hallId)
+        public async Task<List<Seat>> GetSeatsInHall(Guid hallId)
         {
             var allSeatEntity = await _dbContext.Seats
                 .AsNoTracking()
                 .Where(f => f.HallId == hallId)
                 .ToListAsync();
 
-            return _mapper.Map<IReadOnlyList<Seat>>(allSeatEntity);
+            return _mapper.Map<List<Seat>>(allSeatEntity);
         }
     }
 }
