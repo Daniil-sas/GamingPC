@@ -47,6 +47,8 @@ services.AddAutoMapper(typeof(DataBaseMappings));
 
 services.AddAuthorization();
 
+services.AddApiAuthentication(configuration);
+
 var app = builder.Build();
 
 if (app.Environment.IsDevelopment())

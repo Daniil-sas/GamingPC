@@ -16,14 +16,14 @@ namespace BookingService.Persistence.Configuration
                 .HasColumnType("uuid")
                 .IsRequired();
 
-            builder.Property(b => b.UserId)
-                .HasColumnName("user_id")
-                .HasColumnType("uuid")
-                .IsRequired();
-
             builder.Property(b => b.SeatId)
                 .HasColumnName("seat_id")
                 .HasColumnType("uuid")
+                .IsRequired();
+
+            builder.Property(b => b.UserEmail)
+                .HasColumnName("user_email")
+                .HasColumnType("varchar(255)")
                 .IsRequired();
 
             builder.Property(b => b.StartTime)

@@ -2,7 +2,7 @@ export interface Hall {
   id: number;
   name: string;
   seats: Seat[];
-  computer: Computer,
+  computer: Computer;
   floorPlanUrl: string;
   price_per_hour: number;
 }
@@ -18,7 +18,12 @@ export interface Seat {
 export interface BookingPlaceProps {
   halls: Hall[];
   onSeatPress: (seat: Seat, hall: Hall) => void;
-  street?: string;
+  locations?: Location[];
+}
+
+export interface Location {
+  id: string;
+  address: string;
 }
 
 export interface Computer {

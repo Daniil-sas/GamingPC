@@ -190,7 +190,20 @@ const BookingPage: React.FC = () => {
         seat: seat,
       }));
     },
-    street: "Main Street 123",
+    locations: [
+      {
+        id: "222",
+        address: "г.Казань, ул. Кушкина, д. 31",
+      },
+      {
+        id: "232323232232",
+        address: "г.Казань, ул. Муткина, д. 21",
+      },
+      {
+        id: "wss",
+        address: "г.Казань, ул. Туркина, д. 6",
+      },
+    ],
   };
 
   const handleSelectSeat = (seat: Seat) => {

@@ -5,9 +5,9 @@ namespace PaymentService.Services
 {
     public class QrCodeService
     {
-        public string GenerateQrData(PaymentRequest request)
+        public string GenerateQrData(PaymentQRRequest request)
         {
-            return $"bank://payment?amount={request.Amount}&currency={request.Currency}&txn={Guid.NewGuid()}";
+            return $"bank://payment?amount={request.Amount}&currency=RUB&txn={Guid.NewGuid()}";
         }
 
         public string GenerateQrCode(string data, int pixelsPerModule = 20)

@@ -12,9 +12,9 @@ namespace BookingService.Application.Services
             _bookingRepository = bookingRepository;
         }
 
-        public async Task<Guid> CreateBooking(Guid userId, Guid bookingPlaceId, Guid hallId, Guid seatId, TimeSlot slot)
+        public async Task<Guid> CreateBooking(string userEmail, Guid seatId, TimeSlot slot)
         {
-            var booking_id = await _bookingRepository.AddAsync(userId, bookingPlaceId, hallId, seatId, slot);
+            var booking_id = await _bookingRepository.AddAsync(userEmail, seatId, slot);
 
             return booking_id;
         }

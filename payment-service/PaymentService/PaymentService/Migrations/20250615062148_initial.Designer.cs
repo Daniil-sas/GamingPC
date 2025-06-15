@@ -12,8 +12,8 @@ using PaymentService.Data;
 namespace PaymentService.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250609193803_init")]
-    partial class init
+    [Migration("20250615062148_initial")]
+    partial class initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -34,43 +34,23 @@ namespace PaymentService.Migrations
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<decimal>("Amount")
-                        .HasColumnType("decimal(18,2)");
+                        .HasColumnType("decimal(18,2)")
+                        .HasColumnName("amount");
 
                     b.Property<Guid>("BookingId")
-                        .HasColumnType("uuid");
-
-                    b.Property<string>("CardHolder")
-                        .HasMaxLength(100)
-                        .HasColumnType("character varying(100)");
-
-                    b.Property<string>("CardNumber")
-                        .HasMaxLength(20)
-                        .HasColumnType("character varying(20)");
+                        .HasColumnType("uuid")
+                        .HasColumnName("booking_id");
 
                     b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("timestamp with time zone");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("timestamp")
+                        .HasColumnName("created_at")
+                        .HasDefaultValueSql("CURRENT_TIMESTAMP");
 
-                    b.Property<string>("Currency")
-                        .IsRequired()
-                        .HasMaxLength(3)
-                        .HasColumnType("character varying(3)");
+                    b.HasKey("Id")
+                        .HasName("id");
 
-                    b.Property<string>("ExpiryDate")
-                        .HasMaxLength(7)
-                        .HasColumnType("character varying(7)");
-
-                    b.Property<bool>("IsSuccessful")
-                        .HasColumnType("boolean");
-
-                    b.Property<int>("Method")
-                        .HasColumnType("integer");
-
-                    b.Property<string>("QrContent")
-                        .HasColumnType("text");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Payments");
+                    b.ToTable("payments", (string)null);
                 });
 #pragma warning restore 612, 618
         }

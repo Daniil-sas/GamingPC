@@ -5,10 +5,8 @@ namespace BookingService.Domain.Entities
 {
     public class Booking : Entity
     {
-        public Guid UserId { get; set; }
         public Guid SeatId { get; set; }
-        public Guid HallId { get; set; }
-        public Guid BookingPlaceId { get; set; }
+        public string UserEmail { get; set; }
         public TimeSlot Slot { get; set; }
         public DateTime Created { get; set; } = DateTime.Now;
         private Booking()
@@ -16,13 +14,11 @@ namespace BookingService.Domain.Entities
 
         }
 
-        public Booking(Guid id, Guid userId, Guid seatId, Guid hallId, Guid bookingPlaceId, TimeSlot slot)
+        public Booking(Guid id, Guid seatId, string userEmail, TimeSlot slot)
         {
             Id = id;
-            UserId = userId;
+            UserEmail = userEmail;
             SeatId = seatId;
-            HallId = hallId;
-            BookingPlaceId = bookingPlaceId;
             Slot = slot;
         }
         public bool IsActive() => Slot.End > DateTime.UtcNow;

@@ -1,6 +1,5 @@
 ﻿using BookingService.Application.Services;
 using BookingService.Contracts;
-using BookingService.Utils;
 
 namespace BookingService.Controllers
 {
@@ -17,9 +16,7 @@ namespace BookingService.Controllers
         private static async Task<IResult> CreateNewBooking(BookingAddRequest bookingAddRequest, BookingsService bookingsService)
         {
             var bookingId = await bookingsService.CreateBooking(
-                GetUserId.GetCurrentUserId(),
-                bookingAddRequest.BookingPlaceId,
-                bookingAddRequest.HallId,
+                bookingAddRequest.UserEmail,
                 bookingAddRequest.SeatId,
                 new Domain.ValueObjects.TimeSlot(bookingAddRequest.Start, bookingAddRequest.End));
 

@@ -14,9 +14,16 @@ namespace PaymentService.Controllers
         {
             _paymentService = paymentService;
         }
+        [HttpGet]
+        public async Task<IActionResult> GenerateQrCode([FromQuery] PaymentQRRequest request)
+        {
+            string qrCodeBase = _paymentService.GetQrCode(request);
+
+            return Ok(qrCodeBase);
+        }
 
         [HttpPost]
-        public async Task<IActionResult> ProcessPayment([FromBody] PaymentRequest request)
+        public async Task<IActionResult> ProcessPayment([FromBody] PaymentCardRequest request)
         {
             try
             {

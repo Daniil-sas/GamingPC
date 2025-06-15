@@ -6,19 +6,14 @@ services:
     ports: []
     container_name: auth_service_api
     environment:
-      - JwtSetting__Secret= ${JWT_SECRET}
-      - JwtSetting__ExpiryMinutes = 15
-      - JwtSetting__RefreshTokenExpiryDays=7
-      - JwtSetting__Issuer= ${JWT_ISSUER}
-      - JwtSetting__Audience= ${JWT_AUDIENCE}
+      - JwtSetting__Secret=${JWT_SECRET}
+      - JwtSetting__Issuer=${JWT_ISSUER}
+      - JwtSetting__Audience=${JWT_AUDIENCE}
       - Database__HOST=${DB_HOST_AUTHDB}
       - Database__PORT=${DB_PORT}
       - Database__NAME=${DB_NAME_AUTH_DB}
       - Database__USER=${DB_USER}
       - Database__PASSWORD=${DB_PASSWORD}
-      - Redis__PASSWORD=${REDIS_PASSWORD}
-      - Redis__HOST=${REDIS_HOST}
-      - Redis__PORT=${REDIS_PORT}
     depends_on:
       - auth_db
       - redis_db
@@ -112,11 +107,11 @@ services:
     container_name: api_gateway
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - JwtSetting__Secret= ${JWT_SECRET}
-      - JwtSetting__ExpiryMinutes = 15
+      - JwtSetting__Secret=${JWT_SECRET}
+      - JwtSetting__ExpiryMinutes=15
       - JwtSetting__RefreshTokenExpiryDays=7
-      - JwtSetting__Issuer= ${JWT_ISSUER}
-      - JwtSetting__Audience= ${JWT_Audience}
+      - JwtSetting__Issuer=${JWT_ISSUER}
+      - JwtSetting__Audience= ${JWT_AUDIENCE}
     volumes:
       - ./api-gateway-service/bin/Debug/net8.0:/app:ro
     depends_on:

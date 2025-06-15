@@ -70,9 +70,8 @@ namespace BookingService.Persistence.Migrations
                 columns: table => new
                 {
                     id = table.Column<Guid>(type: "uuid", nullable: false),
-                    user_id = table.Column<Guid>(type: "uuid", nullable: false),
                     seat_id = table.Column<Guid>(type: "uuid", nullable: false),
-                    BookingPlaceId = table.Column<Guid>(type: "uuid", nullable: false),
+                    user_email = table.Column<string>(type: "varchar(255)", nullable: false),
                     start_time = table.Column<DateTime>(type: "timestamp", nullable: false),
                     end_time = table.Column<DateTime>(type: "timestamp", nullable: false),
                     created_at = table.Column<DateTime>(type: "timestamp", nullable: false, defaultValueSql: "CURRENT_TIMESTAMP")

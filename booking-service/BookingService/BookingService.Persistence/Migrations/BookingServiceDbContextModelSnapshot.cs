@@ -29,9 +29,6 @@ namespace BookingService.Persistence.Migrations
                         .HasColumnType("uuid")
                         .HasColumnName("id");
 
-                    b.Property<Guid>("BookingPlaceId")
-                        .HasColumnType("uuid");
-
                     b.Property<DateTime>("CreatedAt")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("timestamp")
@@ -50,9 +47,10 @@ namespace BookingService.Persistence.Migrations
                         .HasColumnType("timestamp")
                         .HasColumnName("start_time");
 
-                    b.Property<Guid>("UserId")
-                        .HasColumnType("uuid")
-                        .HasColumnName("user_id");
+                    b.Property<string>("UserEmail")
+                        .IsRequired()
+                        .HasColumnType("varchar(255)")
+                        .HasColumnName("user_email");
 
                     b.HasKey("Id");
 

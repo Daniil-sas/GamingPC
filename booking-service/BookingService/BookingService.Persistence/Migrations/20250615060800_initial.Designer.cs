@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace BookingService.Persistence.Migrations
 {
     [DbContext(typeof(BookingServiceDbContext))]
-    [Migration("20250609121555_initial")]
+    [Migration("20250615060800_initial")]
     partial class initial
     {
         /// <inheritdoc />
@@ -32,9 +32,6 @@ namespace BookingService.Persistence.Migrations
                         .HasColumnType("uuid")
                         .HasColumnName("id");
 
-                    b.Property<Guid>("BookingPlaceId")
-                        .HasColumnType("uuid");
-
                     b.Property<DateTime>("CreatedAt")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("timestamp")
@@ -53,9 +50,10 @@ namespace BookingService.Persistence.Migrations
                         .HasColumnType("timestamp")
                         .HasColumnName("start_time");
 
-                    b.Property<Guid>("UserId")
-                        .HasColumnType("uuid")
-                        .HasColumnName("user_id");
+                    b.Property<string>("UserEmail")
+                        .IsRequired()
+                        .HasColumnType("varchar(255)")
+                        .HasColumnName("user_email");
 
                     b.HasKey("Id");
 

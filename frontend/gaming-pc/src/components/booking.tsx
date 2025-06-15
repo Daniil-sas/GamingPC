@@ -1,23 +1,102 @@
 import { FC, useState } from "react";
 import { BookingPlaceProps } from "../types/booking";
-import { Hall } from "../types/booking";
+import { Hall, Location } from "../types/booking";
 import WorkPlace from "./work-place";
 import DatePicker from "react-datepicker";
 
 import "react-datepicker/dist/react-datepicker.css";
 
-const BookingMap: FC<BookingPlaceProps> = ({ halls, onSeatPress, street }) => {
+const BookingMap: FC<BookingPlaceProps> = ({
+  halls,
+  onSeatPress,
+  locations,
+}) => {
   const [selectedHall, setSelectedHall] = useState<Hall | null>(
     halls[0] || null
   );
 
+  const [selectedLocation, setSelectedLocation] = useState<Location | null>(
+    locations![0] || null
+  );
+
   const [startDate, setStartDate] = useState<Date | null>(new Date());
+
+  const [tooltip, setTooltip] = useState<{
+    visible: boolean;
+    x: number;
+    y: number;
+    text: string;
+  }>({
+    visible: false,
+    x: 0,
+    y: 0,
+    text: "",
+  });
+
+  const handleMouseEnter = (
+    e: React.MouseEvent<HTMLButtonElement>,
+    text: string
+  ) => {
+    const { clientX, clientY } = e;
+    setTooltip({
+      visible: true,
+      x: clientX + 10,
+      y: clientY + 10,
+      text,
+    });
+  };
+
+  const handleMouseLeave = () => {
+    setTooltip({ ...tooltip, visible: false });
+  };
 
   return (
     <div className="max-w-4xl mx-auto p-4 bg-white border my-6">
       <div className="mb-6 text-center">
         <h1 className="text-2xl font-bold text-gray-800">
-          {street ? `Бронирование мест - ${street}` : "Бронирование мест"}
+          <h1>Локация для бронирования места</h1>
+          <div className="mt-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {locations!.map((location) => (
+              <button
+                key={location.id}
+                onClick={() => setSelectedLocation(location)}
+                onMouseEnter={(e) => handleMouseEnter(e, location.address)}
+                onMouseLeave={handleMouseLeave}
+                className={`
+                relative rounded-xl p-5 text-left transition-all duration-300
+                bg-gradient-to-br 
+                ${
+                  selectedLocation?.id === location.id
+                    ? "from-blue-500 to-indigo-600 ring-2 ring-white shadow-lg"
+                    : "from-gray-100 to-gray-200 hover:shadow-md"
+                }
+              `}
+              >
+                <div className="relative z-10 flex flex-col gap-1">
+                  <h3
+                    className={`
+                  text-lg font-semibold truncate
+                  ${
+                    selectedLocation?.id === location.id
+                      ? "text-white"
+                      : "text-gray-800"
+                  }
+                `}
+                  >
+                    {location.address}
+                  </h3>
+                </div>
+              </button>
+            ))}
+            {tooltip.visible && tooltip.text && (
+              <div
+                className="fixed z-50 px-3 py-2 text-sm text-white bg-gray-800 rounded shadow-lg pointer-events-none"
+                style={{ top: `${tooltip.y}px`, left: `${tooltip.x}px` }}
+              >
+                {tooltip.text}
+              </div>
+            )}
+          </div>
         </h1>
       </div>
 
