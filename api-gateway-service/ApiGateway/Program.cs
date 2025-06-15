@@ -7,6 +7,8 @@ using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
+var services = builder.Services;
+
 builder.Configuration.AddJsonFile("ocelot.json");
 builder.Services.AddOcelot(builder.Configuration)
                 .AddPolly();
@@ -27,9 +29,22 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
         };
     });
 
+services.AddCors(options => options.AddPolicy("CorsPolicy",
+        buider =>
+        {
+            buider.WithOrigins("https://localhost:3000");
+        }));
+
+services.AddSwaggerGen(c =>
+{
+    c.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo { Title = "Example", Version = "v1" });
+});
+
 builder.Services.AddControllers();
 
 var app = builder.Build();
+
+app.UseCors("CorsPolicy");
 
 app.UseAuthentication();
 app.UseAuthorization();
