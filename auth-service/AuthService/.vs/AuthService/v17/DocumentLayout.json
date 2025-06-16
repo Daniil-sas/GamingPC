@@ -3,12 +3,36 @@
   "WorkspaceRootPath": "D:\\ProgrammProject\\Kursach\\GamingPC\\auth-service\\AuthService\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{C0678574-B91B-4CF9-9744-2670EB87A979}|AuthService.Infrastructure\\AuthService.Infrastructure.csproj|d:\\programmproject\\kursach\\gamingpc\\auth-service\\authservice\\authservice.infrastructure\\services\\jwtprovider.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C0678574-B91B-4CF9-9744-2670EB87A979}|AuthService.Infrastructure\\AuthService.Infrastructure.csproj|solutionrelative:authservice.infrastructure\\services\\jwtprovider.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3FC26419-731F-4429-9044-3C890C159E4A}|AuthService.Application\\AuthService.Application.csproj|d:\\programmproject\\kursach\\gamingpc\\auth-service\\authservice\\authservice.application\\services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3FC26419-731F-4429-9044-3C890C159E4A}|AuthService.Application\\AuthService.Application.csproj|solutionrelative:authservice.application\\services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{4A24582D-7CB5-45F3-8D2A-D1CDD17EFB69}|AuthService\\AuthService.csproj|d:\\programmproject\\kursach\\gamingpc\\auth-service\\authservice\\authservice\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{4A24582D-7CB5-45F3-8D2A-D1CDD17EFB69}|AuthService\\AuthService.csproj|solutionrelative:authservice\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{4A24582D-7CB5-45F3-8D2A-D1CDD17EFB69}|AuthService\\AuthService.csproj|d:\\programmproject\\kursach\\gamingpc\\auth-service\\authservice\\authservice\\controllers\\usersendopints.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4A24582D-7CB5-45F3-8D2A-D1CDD17EFB69}|AuthService\\AuthService.csproj|solutionrelative:authservice\\controllers\\usersendopints.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4A24582D-7CB5-45F3-8D2A-D1CDD17EFB69}|AuthService\\AuthService.csproj|d:\\programmproject\\kursach\\gamingpc\\auth-service\\authservice\\authservice\\controllers\\tokenupdateendpoints.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4A24582D-7CB5-45F3-8D2A-D1CDD17EFB69}|AuthService\\AuthService.csproj|solutionrelative:authservice\\controllers\\tokenupdateendpoints.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{4A24582D-7CB5-45F3-8D2A-D1CDD17EFB69}|AuthService\\AuthService.csproj|d:\\programmproject\\kursach\\gamingpc\\auth-service\\authservice\\authservice\\extensions\\apiextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{4A24582D-7CB5-45F3-8D2A-D1CDD17EFB69}|AuthService\\AuthService.csproj|solutionrelative:authservice\\extensions\\apiextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4A24582D-7CB5-45F3-8D2A-D1CDD17EFB69}|AuthService\\AuthService.csproj|d:\\programmproject\\kursach\\gamingpc\\auth-service\\authservice\\authservice\\contracts\\users\\loginuserrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4A24582D-7CB5-45F3-8D2A-D1CDD17EFB69}|AuthService\\AuthService.csproj|solutionrelative:authservice\\contracts\\users\\loginuserrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3FC26419-731F-4429-9044-3C890C159E4A}|AuthService.Application\\AuthService.Application.csproj|d:\\programmproject\\kursach\\gamingpc\\auth-service\\authservice\\authservice.application\\services\\updatetokenservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3FC26419-731F-4429-9044-3C890C159E4A}|AuthService.Application\\AuthService.Application.csproj|solutionrelative:authservice.application\\services\\updatetokenservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -23,25 +47,98 @@
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "ApiExtensions.cs",
-              "DocumentMoniker": "D:\\ProgrammProject\\Kursach\\GamingPC\\auth-service\\AuthService\\AuthService\\Extensions\\ApiExtensions.cs",
-              "RelativeDocumentMoniker": "AuthService\\Extensions\\ApiExtensions.cs",
-              "ToolTip": "D:\\ProgrammProject\\Kursach\\GamingPC\\auth-service\\AuthService\\AuthService\\Extensions\\ApiExtensions.cs",
-              "RelativeToolTip": "AuthService\\Extensions\\ApiExtensions.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAAtAAAA",
+              "Title": "UserService.cs",
+              "DocumentMoniker": "D:\\ProgrammProject\\Kursach\\GamingPC\\auth-service\\AuthService\\AuthService.Application\\Services\\UserService.cs",
+              "RelativeDocumentMoniker": "AuthService.Application\\Services\\UserService.cs",
+              "ToolTip": "D:\\ProgrammProject\\Kursach\\GamingPC\\auth-service\\AuthService\\AuthService.Application\\Services\\UserService.cs",
+              "RelativeToolTip": "AuthService.Application\\Services\\UserService.cs",
+              "ViewState": "AgIAADEAAAAAAAAAAAAswE4AAAAiAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-15T10:59:38.511Z",
+              "WhenOpened": "2025-06-15T17:01:35.401Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "JwtProvider.cs",
+              "DocumentMoniker": "D:\\ProgrammProject\\Kursach\\GamingPC\\auth-service\\AuthService\\AuthService.Infrastructure\\Services\\JwtProvider.cs",
+              "RelativeDocumentMoniker": "AuthService.Infrastructure\\Services\\JwtProvider.cs",
+              "ToolTip": "D:\\ProgrammProject\\Kursach\\GamingPC\\auth-service\\AuthService\\AuthService.Infrastructure\\Services\\JwtProvider.cs",
+              "RelativeToolTip": "AuthService.Infrastructure\\Services\\JwtProvider.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAqwCQAAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-15T16:54:02.289Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "UsersEndopints.cs",
+              "DocumentMoniker": "D:\\ProgrammProject\\Kursach\\GamingPC\\auth-service\\AuthService\\AuthService\\Controllers\\UsersEndopints.cs",
+              "RelativeDocumentMoniker": "AuthService\\Controllers\\UsersEndopints.cs",
+              "ToolTip": "D:\\ProgrammProject\\Kursach\\GamingPC\\auth-service\\AuthService\\AuthService\\Controllers\\UsersEndopints.cs",
+              "RelativeToolTip": "AuthService\\Controllers\\UsersEndopints.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-15T16:47:57.468Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "LoginUserRequest.cs",
+              "DocumentMoniker": "D:\\ProgrammProject\\Kursach\\GamingPC\\auth-service\\AuthService\\AuthService\\Contracts\\Users\\LoginUserRequest.cs",
+              "RelativeDocumentMoniker": "AuthService\\Contracts\\Users\\LoginUserRequest.cs",
+              "ToolTip": "D:\\ProgrammProject\\Kursach\\GamingPC\\auth-service\\AuthService\\AuthService\\Contracts\\Users\\LoginUserRequest.cs",
+              "RelativeToolTip": "AuthService\\Contracts\\Users\\LoginUserRequest.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-15T16:47:55.444Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "TokenUpdateEndpoints.cs",
+              "DocumentMoniker": "D:\\ProgrammProject\\Kursach\\GamingPC\\auth-service\\AuthService\\AuthService\\Controllers\\TokenUpdateEndpoints.cs",
+              "RelativeDocumentMoniker": "AuthService\\Controllers\\TokenUpdateEndpoints.cs",
+              "ToolTip": "D:\\ProgrammProject\\Kursach\\GamingPC\\auth-service\\AuthService\\AuthService\\Controllers\\TokenUpdateEndpoints.cs",
+              "RelativeToolTip": "AuthService\\Controllers\\TokenUpdateEndpoints.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAABnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-15T16:46:50.264Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "UpdateTokenService.cs",
+              "DocumentMoniker": "D:\\ProgrammProject\\Kursach\\GamingPC\\auth-service\\AuthService\\AuthService.Application\\Services\\UpdateTokenService.cs",
+              "RelativeDocumentMoniker": "AuthService.Application\\Services\\UpdateTokenService.cs",
+              "ToolTip": "D:\\ProgrammProject\\Kursach\\GamingPC\\auth-service\\AuthService\\AuthService.Application\\Services\\UpdateTokenService.cs",
+              "RelativeToolTip": "AuthService.Application\\Services\\UpdateTokenService.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-15T16:46:45.793Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "ApiExtensions.cs",
+              "DocumentMoniker": "D:\\ProgrammProject\\Kursach\\GamingPC\\auth-service\\AuthService\\AuthService\\Extensions\\ApiExtensions.cs",
+              "RelativeDocumentMoniker": "AuthService\\Extensions\\ApiExtensions.cs",
+              "ToolTip": "D:\\ProgrammProject\\Kursach\\GamingPC\\auth-service\\AuthService\\AuthService\\Extensions\\ApiExtensions.cs",
+              "RelativeToolTip": "AuthService\\Extensions\\ApiExtensions.cs",
+              "ViewState": "AgIAABgAAAAAAAAAAAAowA8AAAAtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-15T10:59:38.511Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "Program.cs",
               "DocumentMoniker": "D:\\ProgrammProject\\Kursach\\GamingPC\\auth-service\\AuthService\\AuthService\\Program.cs",
               "RelativeDocumentMoniker": "AuthService\\Program.cs",
               "ToolTip": "D:\\ProgrammProject\\Kursach\\GamingPC\\auth-service\\AuthService\\AuthService\\Program.cs",
               "RelativeToolTip": "AuthService\\Program.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAC8AAAAZAAAA",
+              "ViewState": "AgIAADAAAAAAAAAAAAAewEEAAAAEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-15T10:56:39.887Z",
               "EditorCaption": ""

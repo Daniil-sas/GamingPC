@@ -1,28 +1,22 @@
 services:
-  auth_service:
-    build:
-      context: auth-service/AuthService/
-      dockerfile: AuthService/Dockerfile
-    ports: []
-    container_name: auth_service_api
+  redis_db:
+    image: redis:8.0-alpine
+    hostname: redis_db
+    ports:
+      - "24451:6379"
     environment:
-      - JwtSetting__Secret=${JWT_SECRET}
-      - JwtSetting__Issuer=${JWT_ISSUER}
-      - JwtSetting__Audience=${JWT_AUDIENCE}
-      - Database__HOST=${DB_HOST_AUTHDB}
-      - Database__PORT=${DB_PORT}
-      - Database__NAME=${DB_NAME_AUTH_DB}
-      - Database__USER=${DB_USER}
-      - Database__PASSWORD=${DB_PASSWORD}
-    depends_on:
-      - auth_db
-      - redis_db
+      - REDIS_PASSWORD=${REDIS_PASSWORD}
+    volumes:
+      - redis_data:/data
+    container_name: redis_db_container
     networks:
       - backend
+      
   auth_db:
     image: postgres
+    hostname: auth_db
     ports:
-      - "5432:5432"
+        - "12111:5432"
     environment:
       POSTGRES_HOST_AUTH_METHOD: trust
       POSTGRES_USER: ${DB_USER}
@@ -31,14 +25,58 @@ services:
     volumes:
       - db_auth_data:/var/lib/postgresql/data
     container_name: auth_db_container
-
+    networks:
+      - backend
+      
+  auth_service:
+    build:
+      context: auth-service/AuthService/
+      dockerfile: AuthService/Dockerfile
+    container_name: auth_service_api
+    environment:
+      - ASPNETCORE_URLS=http://+:8080
+      - JwtSetting__ExpiryMinutes=15
+      - JwtSetting__RefreshTokenExpiryDays=7
+      - JwtSetting__Secret=${JWT_SECRET}
+      - JwtSetting__Issuer=${JWT_ISSUER}
+      - JwtSetting__Audience=${JWT_AUDIENCE}
+      - Database__HOST=${DB_HOST_AUTHDB}
+      - Database__PORT=${DB_PORT}
+      - Database__NAME=${DB_NAME_AUTH_DB}
+      - Database__USER=${DB_USER}
+      - Database__PASSWORD=${DB_PASSWORD}
+      - Redis__PORT=${REDIS_PORT}
+      - Redis__HOST=${REDIS_HOST}
+      - Redis__PASSWORD=${REDIS_PASSWORD}
+    depends_on:
+      - auth_db
+      - redis_db
+    networks:
+      - backend
+  
+  booking_db:
+    image: postgres
+    hostname: booking_db
+    ports:
+        - "13111:5432"
+    environment:
+      POSTGRES_HOST_AUTH_METHOD: trust
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_NAME_BOOKING_DB}
+    volumes:
+      - db_booking_data:/var/lib/postgresql/data
+    container_name: booking_db_container
+    networks:
+      - backend
+      
   booking_service:
     build:
       context: booking-service/BookingService/
       dockerfile: BookingService/Dockerfile
-    ports: []
     container_name: booking_service_api
     environment:
+      - ASPNETCORE_URLS=http://+:8080
       - Database__HOST=${DB_HOST_BOOKINGDB}
       - Database__PORT=${DB_PORT}
       - Database__NAME=${DB_NAME_BOOKING_DB}
@@ -48,26 +86,30 @@ services:
       - booking_db
     networks:
       - backend
-  booking_db:
+      
+  payment_db:
     image: postgres
+    hostname: payment_db
     ports:
-      - "5432:5432"
+        - "14111:5432"
     environment:
       POSTGRES_HOST_AUTH_METHOD: trust
       POSTGRES_USER: ${DB_USER}
       POSTGRES_PASSWORD: ${DB_PASSWORD}
-      POSTGRES_DB: ${DB_NAME_BOOKING_DB}
+      POSTGRES_DB: ${DB_NAME_PAYMENT_DB}
     volumes:
-      - db_booking_data:/var/lib/postgresql/data
-    container_name: booking_db_container
-    
+      - db_payment_data:/var/lib/postgresql/data
+    container_name: payment_db_container
+    networks:
+      - backend
+      
   payment_service:
     build:
       context: payment-service/PaymentService/
       dockerfile: PaymentService/Dockerfile
-    ports: []
     container_name: payment_service_api
     environment:
+      - ASPNETCORE_URLS=http://+:8080
       - Database__HOST=${DB_HOST_PAYMENTDB}
       - Database__PORT=${DB_PORT}
       - Database__NAME=${DB_NAME_PAYMENT_DB}
@@ -77,43 +119,20 @@ services:
       - payment_db
     networks:
       - backend
-  payment_db:
-    image: postgres
-    ports:
-      - "5432:5432"
-    environment:
-      POSTGRES_HOST_AUTH_METHOD: trust
-      POSTGRES_USER: ${DB_USER}
-      POSTGRES_PASSWORD: ${DB_PASSWORD}
-      POSTGRES_DB: ${DB_NAME_PAYMENT_DB}
-    volumes:
-      - db_payment_data:/var/lib/postgresql/data
-    container_name: payment_db_container
     
-  redis_db:
-    image: redis:8.0-alpine
-    ports:
-      - "6379:6379"
-    environment:
-      - REDIS_PASSWORD=${REDIS_PASSWORD}
-    volumes:
-      - redis_data:/data
-    container_name: redis_db_container
-  
   api_gateway:
     build:
-      context: api-gateway-service
+      context: api-gateway-service/ApiGateway
       dockerfile: Dockerfile
     container_name: api_gateway
     environment:
+      - ASPNETCORE_URLS=http://+:80
       - ASPNETCORE_ENVIRONMENT=Development
       - JwtSetting__Secret=${JWT_SECRET}
       - JwtSetting__ExpiryMinutes=15
       - JwtSetting__RefreshTokenExpiryDays=7
       - JwtSetting__Issuer=${JWT_ISSUER}
       - JwtSetting__Audience= ${JWT_AUDIENCE}
-    volumes:
-      - ./api-gateway-service/bin/Debug/net8.0:/app:ro
     depends_on:
       - auth_service
       - booking_service
@@ -131,8 +150,6 @@ services:
       - ./api-gateway-service/nginx/conf.d:/etc/nginx/conf.d
       - ./api-gateway-service/nginx/ssl:/etc/nginx/ssl
       - ./api-gateway-service/nginx/logs:/var/log/nginx
-    depends_on:
-      - api_gateway
     networks:
       - backend
     
