@@ -83,7 +83,12 @@ app.UseCookiePolicy(new CookiePolicyOptions
     Secure = CookieSecurePolicy.Always
 });
 
-app.MapGet("get", [Authorize] () =>
+app.MapGet("api/auth/get", [Authorize] () =>
+{
+    return Results.Ok("ok");
+});
+
+app.MapGet("api/auth/gets", () =>
 {
     return Results.Ok("ok");
 });

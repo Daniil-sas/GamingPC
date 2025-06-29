@@ -1,20 +1,23 @@
+using ApiGateway;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Ocelot.DependencyInjection;
 using Ocelot.Middleware;
-using Ocelot.Provider.Polly;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
 var services = builder.Services;
 
-builder.Configuration.AddJsonFile("ocelot.json");
-builder.Services.AddOcelot(builder.Configuration)
-                .AddPolly();
+builder.Configuration.AddJsonFile("ocelot.json", optional: false, reloadOnChange: false);
+services.AddOcelot(builder.Configuration);
 
 var jwtConfig = builder.Configuration.GetSection("JwtSetting");
-builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+
+services.AddScoped<GlobalExceptionHandler>();
+services.AddProblemDetails();
+
+services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer("Jwt", options =>
     {
         options.TokenValidationParameters = new TokenValidationParameters
@@ -29,22 +32,16 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
         };
     });
 
-services.AddCors(options => options.AddPolicy("CorsPolicy",
-        buider =>
-        {
-            buider.WithOrigins("https://localhost:3000");
-        }));
-
 services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo { Title = "Example", Version = "v1" });
 });
 
-builder.Services.AddControllers();
+services.AddControllers();
 
 var app = builder.Build();
 
-app.UseCors("CorsPolicy");
+app.UseExceptionHandler();
 
 app.UseAuthentication();
 app.UseAuthorization();

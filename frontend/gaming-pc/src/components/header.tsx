@@ -67,15 +67,7 @@ const Header: React.FC<HeaderProps> = ({ user, onLoginClick, onLogout }) => {
               <div className="flex items-center space-x-2">
                 <div className="w-8 h-8 bg-amber-600 rounded-full flex items-center justify-center">
                   <span className="text-white text-sm font-semibold">
-                    {user!.avatar ? (
-                      <img
-                        src={user!.avatar || "/placeholder.svg"}
-                        alt={user!.username}
-                        className="w-8 h-8 rounded-full"
-                      />
-                    ) : (
-                      user!.login?.charAt(0).toUpperCase()
-                    )}
+                    {user!.login?.charAt(0).toUpperCase()}
                   </span>
                 </div>
                 <span className="text-sm font-medium">{user!.email}</span>

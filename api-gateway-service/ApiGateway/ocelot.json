@@ -1,8 +1,11 @@
 {
+  "GlobalConfiguration": {
+    "BaseUrl": "https://localhost:5003"
+  },
   "Routes": [
     {
       "DownstreamPathTemplate": "/api/auth/{everything}",
-      "DownstreamScheme": "http",
+      "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
           "Host": "auth_service",
@@ -22,7 +25,7 @@
         }
       ],
       "UpstreamPathTemplate": "/api/booking/{everything}",
-      "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE" ],
+      "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE" ]
       //"AuthenticationOptions": {
       //  "AuthenticationProviderKey": "Jwt",
       //  "AllowedScopes": []
@@ -38,14 +41,11 @@
         }
       ],
       "UpstreamPathTemplate": "/api/payment/{everything}",
-      "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE" ],
+      "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE" ]
       //"AuthenticationOptions": {
       //  "AuthenticationProviderKey": "Jwt",
       //  "AllowedScopes": []
       //}
     }
-  ],
-  "GlobalConfiguration": {
-    "BaseUrl": "https://localhost"
-  }
+  ]
 }
