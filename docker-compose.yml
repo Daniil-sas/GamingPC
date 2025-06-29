@@ -140,6 +140,16 @@ services:
     networks:
       - backend
   
+  frontend:
+    build:
+      context: ./frontend/gaming-pc
+      dockerfile: Dockerfile
+    container_name: frontend_app
+    environment:
+      - REACT_APP_API_BASE_URL=/api
+    networks:
+      - backend
+
   nginx:
     image: nginx:1.23-alpine
     ports:
@@ -147,9 +157,13 @@ services:
       - "443:443"
     container_name: nginx_proxy
     volumes:
+      - ./frontend/gaming-pc/build:/usr/share/nginx/html
+      - ./ssl:/etc/nginx/ssl
       - ./api-gateway-service/nginx/conf.d:/etc/nginx/conf.d
-      - ./api-gateway-service/nginx/ssl:/etc/nginx/ssl
       - ./api-gateway-service/nginx/logs:/var/log/nginx
+    depends_on:
+      - api_gateway
+      - frontend
     networks:
       - backend
     
