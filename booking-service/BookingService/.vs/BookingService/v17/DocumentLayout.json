@@ -82,8 +82,7 @@
               "RelativeToolTip": "BookingService\\Controllers\\BookingEndpoints.cs",
               "ViewState": "AQIAAAEAAAAAAAAAAAAtwBQAAABiAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-15T06:02:48.891Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-15T06:02:48.891Z"
             },
             {
               "$type": "Document",
@@ -95,8 +94,7 @@
               "RelativeToolTip": "BookingService.Application\\Services\\BookingsService.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAABJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-15T06:02:26.345Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-15T06:02:26.345Z"
             },
             {
               "$type": "Document",
@@ -108,8 +106,7 @@
               "RelativeToolTip": "BookingService.Domain\\Interfaces\\Repositories\\IBookingRepository.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAtAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-15T06:01:55.342Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-15T06:01:55.342Z"
             },
             {
               "$type": "Document",
@@ -121,8 +118,7 @@
               "RelativeToolTip": "BookingService.Persistence\\Repositories\\BookingRepository.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAqwAkAAAAnAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-15T06:00:29.113Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-15T06:00:29.113Z"
             },
             {
               "$type": "Document",
@@ -134,8 +130,7 @@
               "RelativeToolTip": "BookingService.Persistence\\Entities\\SeatEntity.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-15T05:55:32.943Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-15T05:55:32.943Z"
             },
             {
               "$type": "Document",
@@ -145,7 +140,7 @@
               "RelativeDocumentMoniker": "BookingService.Persistence\\Configuration\\BookingPlaceConfiguration.cs",
               "ToolTip": "D:\\ProgrammProject\\Kursach\\GamingPC\\booking-service\\BookingService\\BookingService.Persistence\\Configuration\\BookingPlaceConfiguration.cs",
               "RelativeToolTip": "BookingService.Persistence\\Configuration\\BookingPlaceConfiguration.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAA4AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-15T05:54:37.192Z",
               "EditorCaption": ""
@@ -172,8 +167,7 @@
               "RelativeToolTip": "BookingService.Persistence\\Mappings\\DatabaseMappings.cs",
               "ViewState": "AQIAAAoAAAAAAAAAAAA1wAkAAAAFAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-15T05:51:31.491Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-15T05:51:31.491Z"
             },
             {
               "$type": "Document",
@@ -185,8 +179,7 @@
               "RelativeToolTip": "BookingService.Persistence\\Configuration\\BookingConfiguration.cs",
               "ViewState": "AQIAAAoAAAAAAAAAAAAgwCgAAAArAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-15T05:51:03.152Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-15T05:51:03.152Z"
             },
             {
               "$type": "Document",
@@ -246,8 +239,7 @@
               "RelativeToolTip": "BookingService.Domain\\Entities\\Booking.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAABAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-15T05:51:39.001Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-15T05:51:39.001Z"
             },
             {
               "$type": "Document",

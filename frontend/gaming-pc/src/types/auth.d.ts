@@ -4,7 +4,6 @@ export interface User {
   password: string;
   username?: string;
   email: string;
-  avatar?: string;
 }
 
 export interface LoginFormData {
